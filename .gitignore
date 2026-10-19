@@ -1,8 +1,14 @@
-test-runner.js
+node_modules/
+package.json
+package-lock.json
+*.log
+test-*.js
+process-*.js
+find-*.js
+polish.js
+fix-*.js
 init-repo.js
 setup-git.js
-find-over-*.js
 check-widths.js
 diagnose-*.js
 .tools/
-*.log
