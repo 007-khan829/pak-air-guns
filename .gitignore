@@ -1,0 +1,8 @@
+test-runner.js
+init-repo.js
+setup-git.js
+find-over-*.js
+check-widths.js
+diagnose-*.js
+.tools/
+*.log
