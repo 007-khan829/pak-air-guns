@@ -339,52 +339,40 @@
             </ul>
           </div>
 
-          <!-- Column 2: Delivery & Payment & Shop Details -->
+          <!-- Column 2: Delivery & Customer Trust -->
           <div class="footer-col">
-            <h3>Delivery & Payment</h3>
+            <h3>Delivery & Trust</h3>
             <div class="footer-policy-item">
               <span>🚚</span>
               <div>
                 <strong>Delivery all over Pakistan: Rs 1,500.</strong>
+                <p style="margin-top:4px; font-size:0.85rem; color:var(--text-muted);">Fast, safe courier delivery across all cities and towns.</p>
               </div>
             </div>
             <div class="footer-policy-item">
               <span>📦</span>
               <div>
-                <strong>Open the parcel first, then send the remaining payment.</strong>
+                <strong>Open the parcel first, then pay.</strong>
+                <p style="margin-top:4px; font-size:0.85rem; color:var(--text-muted);">Inspect your parcel upon delivery before paying the remaining amount.</p>
               </div>
-            </div>
-
-            <div class="footer-shop-loc">
-              <h4 style="color:#fff; font-size:1.05rem; margin-bottom:8px;">Visit the Shop</h4>
-              <p style="color:var(--text-secondary); font-size:0.9rem; line-height:1.5; margin-bottom:12px;">
-                Shop # 16, Main Wagah Road, Lahore, Pakistan
-              </p>
-              <a href="https://wa.me/${WHATSAPP_NUMBER}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-gold btn-sm">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                  <path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.979-.276-.1-.476-.15-.676.15s-.777.98-.953 1.18c-.175.2-.351.226-.652.075s-1.27-.468-2.42-1.493c-.894-.799-1.498-1.787-1.674-2.088-.175-.3-.019-.462.132-.612.136-.135.301-.351.451-.527.151-.175.2-.301.301-.501.1-.2.05-.376-.025-.526-.075-.15-.676-1.63-.927-2.232-.244-.588-.492-.508-.676-.517l-.576-.01c-.2 0-.526.075-.802.376s-1.053 1.028-1.053 2.508 1.078 2.909 1.228 3.11c.151.2 2.122 3.24 5.142 4.544.718.31 1.279.496 1.716.634.721.23 1.378.198 1.897.12.578-.088 1.78-.727 2.03-1.43.25-.702.25-1.304.175-1.43-.075-.125-.276-.2-.576-.35z"/>
-                </svg>
-                WhatsApp: +92 310 2157098
-              </a>
             </div>
           </div>
 
-          <!-- Column 3: Location Map Iframe -->
+          <!-- Column 3: Store & WhatsApp -->
           <div class="footer-col">
-            <h3>Find Our Shop</h3>
-            <iframe 
-              src="https://www.google.com/maps?q=Shop+16+Main+Wagah+Road+Lahore&output=embed" 
-              width="100%" 
-              height="180" 
-              style="border:0;" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade" 
-              title="Pak Air Guns Location Map" 
-              class="footer-map-frame">
-            </iframe>
-            <a href="https://maps.google.com/?q=Shop+16+Main+Wagah+Road+Lahore" target="_blank" rel="noopener noreferrer" class="gold-link">
-              Open in Google Maps &rarr;
+            <h3>Visit Our Shop</h3>
+            <p style="color:var(--text-secondary); font-size:0.92rem; line-height:1.6; margin-bottom:12px;">
+              📍 <strong>Shop # 16, Main Wagah Road</strong><br>
+              Lahore, Punjab, Pakistan
+            </p>
+            <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:16px;">
+              Open 7 Days a week &bull; Orders & Inquiries via WhatsApp
+            </p>
+            <a href="https://wa.me/${WHATSAPP_NUMBER}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-gold btn-sm">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.979-.276-.1-.476-.15-.676.15s-.777.98-.953 1.18c-.175.2-.351.226-.652.075s-1.27-.468-2.42-1.493c-.894-.799-1.498-1.787-1.674-2.088-.175-.3-.019-.462.132-.612.136-.135.301-.351.451-.527.151-.175.2-.301.301-.501.1-.2.05-.376-.025-.526-.075-.15-.676-1.63-.927-2.232-.244-.588-.492-.508-.676-.517l-.576-.01c-.2 0-.526.075-.802.376s-1.053 1.028-1.053 2.508 1.078 2.909 1.228 3.11c.151.2 2.122 3.24 5.142 4.544.718.31 1.279.496 1.716.634.721.23 1.378.198 1.897.12.578-.088 1.78-.727 2.03-1.43.25-.702.25-1.304.175-1.43-.075-.125-.276-.2-.576-.35z"/>
+              </svg>
+              WhatsApp: +92 310 2157098
             </a>
           </div>
         </div>
