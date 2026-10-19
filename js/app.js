@@ -302,6 +302,22 @@
           `;
         }
       });
+
+      // Close drawer when clicking any link
+      drawer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function() {
+          drawer.classList.remove('open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+          drawer.setAttribute('aria-hidden', 'true');
+          toggleBtn.innerHTML = `
+            <svg viewBox="0 0 24 24" width="26" height="26" stroke="currentColor" stroke-width="2" fill="none">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          `;
+        });
+      });
     }
 
     // Header scroll background effect
@@ -402,7 +418,7 @@
 
     return `
       <article class="product-card" data-id="${product.id}" data-category="${product.category}">
-        <!-- 4/3 Aspect Ratio Container with Dark Gold Background -->
+        <!-- 4/3 Aspect Ratio Container with Soft Light Warm Backdrop & Vignette -->
         <div class="product-img-box">
           <img 
             src="${product.image}" 
@@ -414,7 +430,6 @@
             ${isHeroItem ? 'fetchpriority="high"' : ''}
             class="product-img"
           />
-          <div class="product-badge-scrim" aria-hidden="true"></div>
           <!-- Price Badge on top of image (bottom-left) -->
           <div class="product-price-badge">${formatPrice(product.price)}</div>
         </div>
@@ -436,6 +451,56 @@
         </div>
       </article>
     `;
+  }
+
+  // ---------------- Product Card Slide-In Animation System ----------------
+  function initCardSlideAnimations() {
+    const cards = Array.from(document.querySelectorAll('.product-card'));
+    if (!cards.length) return;
+
+    // Accessibility check: prefers-reduced-motion
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      cards.forEach(card => card.classList.add('animate-in'));
+      return;
+    }
+
+    // Assign alternating slide directions and stagger delays
+    cards.forEach((card, index) => {
+      // 0-indexed: index 0 (1st card, odd) slides from left; index 1 (2nd card, even) slides from right
+      if (index % 2 === 0) {
+        card.classList.add('slide-left');
+      } else {
+        card.classList.add('slide-right');
+      }
+      // Stagger neighbouring cards by 70ms
+      const stagger = index % 4;
+      card.style.transitionDelay = `${stagger * 70}ms`;
+    });
+
+    // IntersectionObserver to animate cards as they enter view
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      rootMargin: '40px 0px -20px 0px',
+      threshold: 0.05
+    });
+
+    cards.forEach(card => observer.observe(card));
+
+    // Safety fallback: reveal all remaining cards after 3 seconds
+    setTimeout(() => {
+      cards.forEach(card => {
+        if (!card.classList.contains('animate-in')) {
+          card.classList.add('animate-in');
+        }
+      });
+    }, 3000);
   }
 
   // ---------------- Page Initializers ----------------
@@ -460,6 +525,8 @@
       const covers = getProductsByCategory('cover');
       coversContainer.innerHTML = covers.map(p => renderProductCard(p, false)).join('');
     }
+
+    initCardSlideAnimations();
   }
 
   // 2. Air Guns Page Init
@@ -471,6 +538,8 @@
       const countEl = document.getElementById('air-guns-count');
       if (countEl) countEl.textContent = `${guns.length} Models Available`;
     }
+
+    initCardSlideAnimations();
   }
 
   // 3. Scopes & Accessories Page Init
@@ -493,6 +562,8 @@
       const accessories = getProductsByCategory('accessory');
       accessoriesContainer.innerHTML = accessories.map(p => renderProductCard(p, false)).join('');
     }
+
+    initCardSlideAnimations();
   }
 
   // 4. Cart Page Init
