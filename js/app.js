@@ -51,7 +51,7 @@
     }
 
     saveCart(cart);
-    showToast(`Added to cart: ${product.name}`);
+    showAddToCartModal(product);
   }
 
   function updateCartQuantity(productId, delta) {
@@ -83,7 +83,6 @@
     if (typeof window.renderCheckoutSummary === 'function') {
       window.renderCheckoutSummary();
     }
-    showToast("Item removed from cart");
   }
 
   function clearCart() {
@@ -138,32 +137,132 @@
     });
   }
 
-  // ---------------- UI Toast System ----------------
-  function showToast(message) {
-    let container = document.querySelector('.toast-container');
-    if (!container) {
-      container = document.createElement('div');
-      container.className = 'toast-container';
-      document.body.appendChild(container);
+  // ---------------- Clean White Pop-Up System (Backdrop <= 30% Opacity) ----------------
+  // Pop-ups are used strictly for Add-to-Cart and Order Confirmation
+  function showAddToCartModal(product) {
+    let backdrop = document.getElementById('add-to-cart-modal');
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.id = 'add-to-cart-modal';
+      backdrop.className = 'modal-backdrop';
+      backdrop.setAttribute('role', 'dialog');
+      backdrop.setAttribute('aria-modal', 'true');
+      backdrop.setAttribute('aria-label', 'Item Added to Cart');
+      document.body.appendChild(backdrop);
     }
 
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.innerHTML = `
-      <div class="toast-icon">✓</div>
-      <span>${escapeHtml(message)}</span>
+    const priceText = formatPrice(product.price);
+
+    backdrop.innerHTML = `
+      <div class="modal-card">
+        <button class="modal-close-btn" onclick="window.closeAddToCartModal()" aria-label="Close modal">×</button>
+        <div class="modal-status-icon">✓</div>
+        <h3 class="modal-title">Added to Cart!</h3>
+        <p class="modal-subtitle">Item has been added to your shopping cart.</p>
+        
+        <div class="modal-product-preview">
+          <img src="${product.image}" alt="${escapeHtml(product.name)}" class="modal-product-thumb" />
+          <div class="modal-product-info">
+            <div class="modal-product-name">${escapeHtml(product.name)}</div>
+            <div class="modal-product-price">${priceText}</div>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <a href="cart.html" class="btn btn-gold btn-block">
+            View Cart &amp; Checkout &rarr;
+          </a>
+          <button class="btn btn-outline-gold btn-block" onclick="window.closeAddToCartModal()">
+            Continue Shopping
+          </button>
+        </div>
+      </div>
     `;
 
-    container.appendChild(toast);
+    // Trigger open animation
+    requestAnimationFrame(() => {
+      backdrop.classList.add('open');
+    });
 
-    setTimeout(() => {
-      toast.style.animation = 'toastOut 0.3s forwards';
-      setTimeout(() => {
-        if (toast.parentNode) {
-          toast.parentNode.removeChild(toast);
-        }
-      }, 300);
-    }, 2800);
+    // Close on backdrop click
+    backdrop.onclick = function(e) {
+      if (e.target === backdrop) {
+        closeAddToCartModal();
+      }
+    };
+  }
+
+  function closeAddToCartModal() {
+    const backdrop = document.getElementById('add-to-cart-modal');
+    if (backdrop) {
+      backdrop.classList.remove('open');
+    }
+  }
+
+  function showOrderConfirmModal(waUrl) {
+    let backdrop = document.getElementById('order-confirm-modal');
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.id = 'order-confirm-modal';
+      backdrop.className = 'modal-backdrop';
+      backdrop.setAttribute('role', 'dialog');
+      backdrop.setAttribute('aria-modal', 'true');
+      backdrop.setAttribute('aria-label', 'Order Generated Successfully');
+      document.body.appendChild(backdrop);
+    }
+
+    backdrop.innerHTML = `
+      <div class="modal-card">
+        <button class="modal-close-btn" onclick="window.closeOrderConfirmModal()" aria-label="Close modal">×</button>
+        <div class="modal-status-icon">✓</div>
+        <h3 class="modal-title">Order Generated!</h3>
+        <p class="modal-subtitle">Opening WhatsApp to confirm your order details with PAK AIR GUNS.</p>
+
+        <div style="background:#FEF3C7; border:1px solid #FCD34D; border-radius:10px; padding:12px; margin-bottom:18px; font-size:0.85rem; color:#92400E; text-align:left;">
+          <strong>Open parcel first, then pay.</strong><br>
+          Delivery all over Pakistan: Rs 1,500.
+        </div>
+
+        <div class="modal-actions">
+          <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-block">
+            Open WhatsApp Now &rarr;
+          </a>
+          <button class="btn btn-outline-gold btn-block" onclick="window.closeOrderConfirmModal()">
+            Done / Close
+          </button>
+        </div>
+      </div>
+    `;
+
+    requestAnimationFrame(() => {
+      backdrop.classList.add('open');
+    });
+
+    backdrop.onclick = function(e) {
+      if (e.target === backdrop) {
+        closeOrderConfirmModal();
+      }
+    };
+  }
+
+  function closeOrderConfirmModal() {
+    const backdrop = document.getElementById('order-confirm-modal');
+    if (backdrop) {
+      backdrop.classList.remove('open');
+    }
+  }
+
+  // Close modals on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeAddToCartModal();
+      closeOrderConfirmModal();
+    }
+  });
+
+  // Fallback toast function for minor alerts
+  function showToast(message) {
+    console.log("[Notification]:", message);
   }
 
   function escapeHtml(text) {
@@ -902,6 +1001,9 @@ Delivery all over Pakistan Rs 1,500. Customer will open the parcel first, then s
         // Clear cart after order
         clearCart();
 
+        // Show clean white Order Confirmation Modal (backdrop <= 30%)
+        showOrderConfirmModal(waUrl);
+
         // Render Success Screen with Fallback Link
         if (layout) {
           layout.innerHTML = `
@@ -963,7 +1065,6 @@ Delivery all over Pakistan Rs 1,500. Customer will open the parcel first, then s
 
       const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(inquiryMsg)}`;
       window.open(waUrl, '_blank');
-      showToast("Opening WhatsApp...");
     });
   }
 
@@ -996,6 +1097,10 @@ Delivery all over Pakistan Rs 1,500. Customer will open the parcel first, then s
   window.removeFromCart = removeFromCart;
   window.clearCart = clearCart;
   window.getCartItemCount = getCartItemCount;
+  window.showAddToCartModal = showAddToCartModal;
+  window.closeAddToCartModal = closeAddToCartModal;
+  window.showOrderConfirmModal = showOrderConfirmModal;
+  window.closeOrderConfirmModal = closeOrderConfirmModal;
   window.showToast = showToast;
 
 })();
