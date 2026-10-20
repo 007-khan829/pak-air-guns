@@ -1,57 +1,65 @@
 /* ==========================================================================
-   PAK AIR GUNS - Clean Light Luxury E-Commerce Stylesheet
-   Theme: Pure light off-white (#F7F7F5), crisp white cards (#FFFFFF),
-          amber/orange accents (#D97706), elegant deep navy footer (#0F172A).
+   PAK AIR GUNS - Premium Champagne + Navy + Gold Stylesheet
+   Theme Palette:
+     - Navy: #0F172A, Deep Navy: #0B1224, Mid Navy: #1B2A4A
+     - Champagne Gold: #C9A24A, Hover: #B38B2E, Light Gold: #E5C378
+     - Sand: #F3EBDD, Sand End: #EADFCB, Deep Sand: #E9DEC8, Deep Sand End: #DFD2B8
+     - Ivory Card: #FFFCF5, Cream Image Container: #F6F0E4, Card Border: #E4D6B8
+     - Text on Sand/Ivory: #1F2937, Muted: #5B6472
+     - Text on Navy: #F8FAFC, Muted: #CBD5E1, Address: #E2E8F0
    Fonts: Playfair Display (headings) + Inter (body) + Great Vibes (script)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&display=swap');
 
 :root {
-  /* Clean Light Theme Palette */
-  --bg-primary: #F7F7F5;          /* Clean light off-white page background */
-  --bg-secondary: #FFFFFF;        /* Crisp white for alternating sections */
-  --bg-card: #FFFFFF;             /* Pure white product & info cards */
-  --bg-card-hover: #FFFFFF;       /* Hover state */
-  --bg-surface: #F3F4F6;          /* Light grey container background for images */
-  --bg-header: rgba(255, 255, 255, 0.96); /* Clean white sticky header with subtle blur */
+  /* Navy Tones */
+  --navy-primary: #0F172A;        /* Rich Navy */
+  --navy-deep: #0B1224;           /* Deep Luxury Navy */
+  --navy-mid: #1B2A4A;            /* Mid Navy for hero & headers */
+  --navy-surface: #131E36;        /* Surface on dark areas */
 
-  /* Dark Amber / Orange Accents (high contrast on white) */
-  --amber-primary: #D97706;       /* Darker amber/orange */
-  --amber-hover: #B45309;         /* Slightly darker on hover */
-  --amber-light: #FEF3C7;         /* Very soft amber tint */
-  --amber-border: #FCD34D;
-  --amber-gradient: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-  --amber-glow: 0 4px 14px rgba(217, 119, 6, 0.25);
+  /* Champagne Gold Accents */
+  --gold-primary: #C9A24A;        /* Champagne Gold */
+  --gold-hover: #B38B2E;          /* Richer darker gold on hover */
+  --gold-light: #E5C378;          /* Soft champagne gold */
+  --gold-border: rgba(201, 162, 74, 0.40); /* 1px 40% opacity divider */
+  --gold-glow-radial: radial-gradient(ellipse at center, rgba(201, 162, 74, 0.12) 0%, transparent 70%);
 
-  /* Gold / Amber alias compatibility */
-  --gold-primary: #D97706;
-  --gold-light: #D97706;
-  --gold-bright: #F59E0B;
-  --gold-dark: #B45309;
-  --gold-gradient: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-  --gold-glow: 0 4px 14px rgba(217, 119, 6, 0.20);
-  --gold-glow-strong: 0 6px 20px rgba(217, 119, 6, 0.30);
+  /* Sand & Champagne Rhythm */
+  --sand-base: #F3EBDD;           /* Warm Sand base */
+  --sand-end: #EADFCB;            /* Sand gradient bottom */
+  --deep-sand: #E9DEC8;           /* Deep Sand */
+  --deep-sand-end: #DFD2B8;       /* Deep Sand gradient bottom */
+  --ivory-card: #FFFCF5;          /* Pure Ivory for product cards */
+  --cream-img: #F6F0E4;           /* Cream for product image container */
+  --card-border: #E4D6B8;         /* 1px border for ivory cards */
 
-  /* High-Contrast Dark Text Hierarchy on Light Background */
-  --text-primary: #111827;        /* Very dark charcoal/black for titles & headings */
-  --text-secondary: #1F2A37;      /* Clean dark grey for body/nav */
-  --text-muted: #4B5563;          /* Medium dark grey for descriptions and subtitles */
+  /* Text Hierarchy on Sand / Ivory */
+  --text-primary: #1F2937;        /* Clean dark charcoal */
+  --text-secondary: #374151;      /* Secondary dark text */
+  --text-muted: #5B6472;          /* Muted slate text */
 
-  /* Borders & Radii */
-  --border-subtle: #E5E7EB;       /* Light grey border */
-  --border-medium: #D1D5DB;       /* Medium light border */
-  --border-focus: #D97706;
+  /* Compatibility & Semantic Aliases */
+  --bg-primary: var(--sand-base);
+  --bg-card: var(--ivory-card);
+  --border-subtle: var(--card-border);
+  --border-medium: var(--card-border);
 
+  /* Text Hierarchy on Navy */
+  --text-on-navy: #F8FAFC;        /* Crisp off-white */
+  --text-on-navy-muted: #CBD5E1;  /* Soft light slate */
+  --text-address-navy: #E2E8F0;   /* High-contrast fully readable address */
+
+  /* Border Radii */
   --radius-sm: 6px;
   --radius-md: 10px;
-  --radius-lg: 12px;              /* Exact 12px radius requested for cards */
+  --radius-lg: 14px;              /* Exact 14px radius requested for cards */
   --radius-full: 9999px;
 
-  /* Soft Shadows */
-  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
-  --shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.10), 0 2px 6px rgba(0, 0, 0, 0.04);
-  --shadow-dropdown: 0 16px 36px rgba(0, 0, 0, 0.12);
+  /* Shadows */
+  --shadow-card: 0 10px 30px rgba(15, 23, 42, 0.10);
+  --shadow-hover: 0 14px 36px rgba(15, 23, 42, 0.16);
 
   --font-heading: 'Playfair Display', Georgia, serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -59,8 +67,8 @@
 
   --header-height: 72px;
 
-  /* Faint target-reticle pattern (3.5% opacity) */
-  --pattern-lodge: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120' opacity='0.035'%3E%3Cpath d='M60 12 A48 48 0 0 1 108 60 A48 48 0 0 1 60 108 A48 48 0 0 1 12 60 A48 48 0 0 1 60 12 Z' fill='none' stroke='%23D97706' stroke-width='0.9'/%3E%3Cpath d='M60 26 A34 34 0 0 1 94 60 A34 34 0 0 1 60 94 A34 34 0 0 1 26 60 A34 34 0 0 1 60 26 Z' fill='none' stroke='%23D97706' stroke-width='0.8' stroke-dasharray='3 3'/%3E%3Cpath d='M60 40 A20 20 0 0 1 80 60 A20 20 0 0 1 60 80 A20 20 0 0 1 40 60 A20 20 0 0 1 60 40 Z' fill='none' stroke='%23D97706' stroke-width='0.8'/%3E%3Cpath d='M60 0 v120 M0 60 h120' stroke='%23D97706' stroke-width='0.7' stroke-dasharray='4 8'/%3E%3Ccircle cx='60' cy='60' r='2.5' fill='%23D97706'/%3E%3C/svg%3E");
+  /* Faint gold-tinted target/crosshair pattern (3.5% opacity) */
+  --pattern-crosshair: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120' opacity='0.035'%3E%3Cpath d='M60 12 A48 48 0 0 1 108 60 A48 48 0 0 1 60 108 A48 48 0 0 1 12 60 A48 48 0 0 1 60 12 Z' fill='none' stroke='%23C9A24A' stroke-width='0.9'/%3E%3Cpath d='M60 26 A34 34 0 0 1 94 60 A34 34 0 0 1 60 94 A34 34 0 0 1 26 60 A34 34 0 0 1 60 26 Z' fill='none' stroke='%23C9A24A' stroke-width='0.8' stroke-dasharray='3 3'/%3E%3Cpath d='M60 40 A20 20 0 0 1 80 60 A20 20 0 0 1 60 80 A20 20 0 0 1 40 60 A20 20 0 0 1 60 40 Z' fill='none' stroke='%23C9A24A' stroke-width='0.8'/%3E%3Cpath d='M60 0 v120 M0 60 h120' stroke='%23C9A24A' stroke-width='0.7' stroke-dasharray='4 8'/%3E%3Ccircle cx='60' cy='60' r='2.5' fill='%23C9A24A'/%3E%3C/svg%3E");
 }
 
 /* ---------------- CSS Reset & Base ---------------- */
@@ -74,7 +82,7 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-height);
-  background-color: var(--bg-primary);
+  background: linear-gradient(180deg, #F3EBDD 0%, #EADFCB 100%);
   color: var(--text-primary);
   overflow-x: clip;
   max-width: 100%;
@@ -82,7 +90,9 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: var(--bg-primary);
+  /* NEVER pure white or flat white: Warm Sand gradient with faint gold crosshairs */
+  background: var(--pattern-crosshair), linear-gradient(180deg, #F3EBDD 0%, #EADFCB 100%);
+  background-attachment: fixed;
   color: var(--text-primary);
   line-height: 1.6;
   min-height: 100vh;
@@ -150,7 +160,7 @@ h3 {
 }
 
 .gold-text {
-  color: var(--amber-primary);
+  color: var(--gold-primary);
   display: inline-block;
   font-weight: 700;
 }
@@ -169,7 +179,7 @@ h3 {
   min-width: 44px;
   padding: 12px 26px;
   border-radius: var(--radius-md);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.95rem;
   letter-spacing: 0.3px;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -177,20 +187,20 @@ h3 {
   user-select: none;
 }
 
-/* Solid amber/orange with white text, slightly darker on hover */
+/* Solid Champagne Gold with Navy Text */
 .btn-gold {
-  background: var(--amber-primary);
-  color: #FFFFFF;
-  border: 1px solid var(--amber-primary);
-  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.25);
+  background: var(--gold-primary);
+  color: var(--navy-deep);
+  border: 1px solid var(--gold-hover);
+  box-shadow: 0 4px 14px rgba(201, 162, 74, 0.28);
 }
 
 .btn-gold:hover, .btn-gold:focus-visible {
-  background: var(--amber-hover);
-  border-color: var(--amber-hover);
+  background: var(--gold-hover);
+  border-color: var(--gold-hover);
   color: #FFFFFF;
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(180, 83, 9, 0.35);
+  box-shadow: 0 6px 18px rgba(179, 139, 46, 0.38);
 }
 
 .btn-gold:active {
@@ -199,14 +209,14 @@ h3 {
 
 .btn-outline-gold {
   background: transparent;
-  color: var(--amber-primary);
-  border: 1.5px solid var(--amber-primary);
+  color: var(--gold-primary);
+  border: 1.5px solid var(--gold-primary);
 }
 
 .btn-outline-gold:hover, .btn-outline-gold:focus-visible {
-  background: var(--amber-light);
-  color: var(--amber-hover);
-  border-color: var(--amber-hover);
+  background: rgba(201, 162, 74, 0.15);
+  color: #FFFFFF;
+  border-color: var(--gold-light);
   transform: translateY(-2px);
 }
 
@@ -221,8 +231,8 @@ h3 {
 }
 
 .gold-link {
-  color: var(--amber-primary);
-  font-weight: 600;
+  color: var(--gold-hover);
+  font-weight: 700;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -230,12 +240,12 @@ h3 {
 }
 
 .gold-link:hover {
-  color: var(--amber-hover);
+  color: var(--gold-primary);
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 
-/* ---------------- Header & Navigation (White with #1F2A37 text) ---------------- */
+/* ---------------- Sticky Navy Header with Glass Blur & Scroll Shrink ---------------- */
 .site-header {
   position: sticky;
   top: 0;
@@ -243,18 +253,20 @@ h3 {
   right: 0;
   z-index: 1000;
   height: var(--header-height);
-  background: var(--bg-header);
+  background: rgba(11, 18, 36, 0.94);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border-subtle);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  transition: background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  border-bottom: 1px solid var(--gold-border);
+  box-shadow: 0 4px 20px rgba(11, 18, 36, 0.35);
+  transition: height 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
+/* After 40px of scroll: shrinks slightly and gains a deeper shadow on all devices */
 .site-header.scrolled {
-  background: #FFFFFF;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
-  border-bottom-color: var(--border-medium);
+  height: 60px;
+  background: rgba(11, 18, 36, 0.98);
+  box-shadow: 0 10px 30px rgba(11, 18, 36, 0.65), 0 2px 10px rgba(201, 162, 74, 0.15);
+  border-bottom-color: rgba(201, 162, 74, 0.55);
 }
 
 .header-container {
@@ -281,9 +293,9 @@ h3 {
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-sm);
-  background: var(--amber-light);
-  border: 1.5px solid var(--amber-primary);
-  color: var(--amber-primary);
+  background: rgba(201, 162, 74, 0.15);
+  border: 1.5px solid var(--gold-primary);
+  color: var(--gold-primary);
 }
 
 .brand-crest svg {
@@ -302,19 +314,19 @@ h3 {
   font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: 1px;
-  color: #111827;
+  color: #F8FAFC;
   line-height: 1.1;
 }
 
 .brand-name span {
-  color: var(--amber-primary);
+  color: var(--gold-primary);
 }
 
 .brand-tag {
   font-size: 0.65rem;
   letter-spacing: 1.8px;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: #94A3B8;
 }
 
 .main-nav {
@@ -326,14 +338,14 @@ h3 {
 .nav-link {
   font-size: 0.92rem;
   font-weight: 500;
-  color: #1F2A37;
+  color: #CBD5E1;
   padding: 8px 0;
   position: relative;
   transition: color 0.2s ease;
 }
 
 .nav-link:hover, .nav-link.active {
-  color: var(--amber-primary);
+  color: var(--gold-primary);
 }
 
 .nav-link::after {
@@ -343,7 +355,7 @@ h3 {
   left: 0;
   width: 0%;
   height: 2px;
-  background: var(--amber-primary);
+  background: var(--gold-primary);
   transition: width 0.25s ease;
 }
 
@@ -357,25 +369,27 @@ h3 {
   gap: 16px;
 }
 
+/* Gold Cart Pill with Navy Text */
 .cart-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 8px 16px;
   border-radius: var(--radius-full);
-  background: var(--amber-light);
-  border: 1px solid var(--amber-border);
-  color: #B45309;
+  background: var(--gold-primary);
+  border: 1px solid var(--gold-hover);
+  color: var(--navy-deep);
+  font-weight: 700;
   min-height: 44px;
   min-width: 44px;
   transition: all 0.2s ease;
 }
 
 .cart-btn:hover {
-  background: #FDE68A;
-  border-color: var(--amber-primary);
-  color: #92400E;
+  background: var(--gold-hover);
+  color: #FFFFFF;
   transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(179, 139, 46, 0.4);
 }
 
 .cart-icon-wrap {
@@ -384,11 +398,15 @@ h3 {
   align-items: center;
 }
 
+.cart-icon-wrap svg {
+  stroke: currentColor;
+}
+
 .cart-badge {
-  background: var(--amber-primary);
-  color: #FFFFFF;
+  background: var(--navy-deep);
+  color: var(--gold-primary);
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 800;
   min-width: 20px;
   height: 20px;
   border-radius: var(--radius-full);
@@ -396,11 +414,17 @@ h3 {
   align-items: center;
   justify-content: center;
   padding: 0 5px;
+  border: 1px solid rgba(201, 162, 74, 0.4);
+}
+
+.cart-btn:hover .cart-badge {
+  background: #000000;
+  color: #FFFFFF;
 }
 
 .cart-label {
   font-size: 0.88rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .mobile-toggle {
@@ -410,7 +434,7 @@ h3 {
   min-height: 44px;
   min-width: 44px;
   background: transparent;
-  color: #1F2A37;
+  color: #F8FAFC;
   border-radius: var(--radius-sm);
   padding: 8px;
 }
@@ -418,7 +442,7 @@ h3 {
 .mobile-toggle svg {
   width: 26px;
   height: 26px;
-  stroke: #1F2A37;
+  stroke: var(--gold-primary);
 }
 
 /* Mobile Nav Drawer */
@@ -428,14 +452,14 @@ h3 {
   left: 0;
   width: 100%;
   height: calc(100vh - var(--header-height));
-  background: #FFFFFF;
-  border-top: 1px solid var(--border-subtle);
+  background: rgba(11, 18, 36, 0.98);
+  border-top: 1px solid var(--gold-border);
   display: none;
   flex-direction: column;
   padding: 30px 24px;
   z-index: 1001;
   overflow-y: auto;
-  box-shadow: var(--shadow-dropdown);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
 }
 
 .mobile-nav-drawer.open {
@@ -453,25 +477,25 @@ h3 {
   font-size: 1.25rem;
   font-family: var(--font-heading);
   padding: 10px 0;
-  border-bottom: 1px solid var(--border-subtle);
-  color: #1F2A37;
+  border-bottom: 1px solid rgba(201, 162, 74, 0.15);
+  color: #F8FAFC;
 }
 
 .mobile-drawer-contact {
   margin-top: auto;
   padding-top: 20px;
-  border-top: 1px solid var(--border-subtle);
+  border-top: 1px solid var(--gold-border);
   font-size: 0.88rem;
-  color: var(--text-muted);
+  color: #CBD5E1;
 }
 
-/* ---------------- Hero Section (White to soft cream gradient with dark text) ---------------- */
+/* ---------------- Hero Section (Navy Gradient: the only strongly dark area) ---------------- */
 .hero-section {
   position: relative;
-  padding: 70px 0 60px;
-  background-color: #FFFFFF;
-  background-image: var(--pattern-lodge), linear-gradient(180deg, #FFFFFF 0%, #F5F3EF 100%);
-  border-bottom: 1px solid var(--border-subtle);
+  padding: 75px 0 65px;
+  background-color: var(--navy-deep);
+  background-image: var(--pattern-crosshair), linear-gradient(135deg, #0B1224 0%, #101B33 50%, #1B2A4A 100%);
+  border-bottom: 1px solid var(--gold-border);
   overflow: hidden;
   max-width: 100%;
 }
@@ -484,7 +508,7 @@ h3 {
   transform: translateX(-50%);
   width: min(750px, 95vw);
   height: 380px;
-  background: radial-gradient(ellipse, rgba(217, 119, 6, 0.08) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(201, 162, 74, 0.15) 0%, transparent 70%);
   filter: blur(50px);
   pointer-events: none;
 }
@@ -503,9 +527,9 @@ h3 {
   gap: 8px;
   padding: 6px 16px;
   border-radius: var(--radius-full);
-  background: var(--amber-light);
-  border: 1px solid var(--amber-border);
-  color: #B45309;
+  background: rgba(201, 162, 74, 0.15);
+  border: 1px solid var(--gold-primary);
+  color: var(--gold-light);
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 1px;
@@ -516,12 +540,12 @@ h3 {
 .hero-title {
   margin-bottom: 20px;
   line-height: 1.2;
-  color: #111827;
+  color: #F8FAFC;
 }
 
 .hero-subtext {
   font-size: clamp(1rem, 2vw, 1.18rem);
-  color: #4B5563;
+  color: #CBD5E1;
   line-height: 1.65;
   margin-bottom: 32px;
   max-width: 680px;
@@ -537,11 +561,12 @@ h3 {
   flex-wrap: wrap;
 }
 
-/* ---------------- Trust Strip ---------------- */
+/* ---------------- Delivery / Trust Strip (Navy band with gold icons) ---------------- */
 .trust-strip {
-  background: #FFFFFF;
-  border-bottom: 1px solid var(--border-subtle);
-  padding: 22px 0;
+  background: linear-gradient(180deg, #0B1224 0%, #0F172A 100%);
+  border-top: 1px solid var(--gold-border);
+  border-bottom: 1px solid var(--gold-border);
+  padding: 24px 0;
 }
 
 .trust-grid {
@@ -554,18 +579,18 @@ h3 {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 12px 16px;
-  background: #FFFFFF;
-  border: 1px solid var(--border-subtle);
+  padding: 14px 18px;
+  background: rgba(19, 30, 54, 0.85);
+  border: 1px solid rgba(201, 162, 74, 0.28);
   border-radius: var(--radius-md);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
   transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .trust-item:hover {
-  border-color: var(--amber-border);
+  border-color: var(--gold-primary);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }
 
 .trust-icon-box {
@@ -573,12 +598,12 @@ h3 {
   height: 44px;
   min-width: 44px;
   border-radius: 50%;
-  background: var(--amber-light);
-  border: 1px solid var(--amber-border);
+  background: rgba(201, 162, 74, 0.15);
+  border: 1.5px solid var(--gold-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--amber-primary);
+  color: var(--gold-primary);
 }
 
 .trust-icon-box svg {
@@ -590,27 +615,26 @@ h3 {
 .trust-title {
   font-size: 0.95rem;
   font-weight: 700;
-  color: #111827;
+  color: #F8FAFC;
   margin-bottom: 2px;
 }
 
 .trust-desc {
   font-size: 0.82rem;
-  color: #4B5563;
+  color: #CBD5E1;
 }
 
-/* ---------------- Page Headers & Banner ---------------- */
+/* ---------------- Interior Page Headers & Policy Banner ---------------- */
 .page-header {
-  padding: 50px 0 35px;
-  background-color: #FFFFFF;
-  background-image: var(--pattern-lodge), linear-gradient(180deg, #FFFFFF 0%, #F5F3EF 100%);
-  border-bottom: 1px solid var(--border-subtle);
+  padding: 55px 0 38px;
+  background: linear-gradient(135deg, #0B1224 0%, #101B33 50%, #1B2A4A 100%);
+  border-bottom: 1px solid var(--gold-border);
   text-align: center;
 }
 
 .page-header h1 {
   margin-bottom: 12px;
-  color: #111827;
+  color: #F8FAFC;
 }
 
 .page-header h1::after {
@@ -619,21 +643,21 @@ h3 {
   width: 120px;
   height: 16px;
   margin: 14px auto 0 auto;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='16' viewBox='0 0 120 16'%3E%3Cline x1='0' y1='8' x2='50' y2='8' stroke='%23D97706' stroke-width='1.2' stroke-linecap='round'/%3E%3Cpolygon points='60,3 65,8 60,13 55,8' fill='%23F59E0B' stroke='%23D97706' stroke-width='0.8'/%3E%3Cline x1='70' y1='8' x2='120' y2='8' stroke='%23D97706' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='16' viewBox='0 0 120 16'%3E%3Cline x1='0' y1='8' x2='50' y2='8' stroke='%23C9A24A' stroke-width='1.2' stroke-linecap='round'/%3E%3Cpolygon points='60,3 65,8 60,13 55,8' fill='%23E5C378' stroke='%23C9A24A' stroke-width='0.8'/%3E%3Cline x1='70' y1='8' x2='120' y2='8' stroke='%23C9A24A' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .page-subtitle {
-  color: #4B5563;
+  color: #CBD5E1;
   font-size: 1.05rem;
   max-width: 650px;
   margin: 0 auto;
 }
 
 .policy-banner {
-  background: var(--amber-light);
-  border: 1px solid var(--amber-border);
+  background: var(--ivory-card);
+  border: 1px solid var(--card-border);
   border-radius: var(--radius-md);
   padding: 16px 20px;
   margin: 28px 0;
@@ -642,6 +666,7 @@ h3 {
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
 }
 
 .policy-banner-content {
@@ -655,8 +680,8 @@ h3 {
   height: 36px;
   min-width: 36px;
   border-radius: 50%;
-  background: var(--amber-primary);
-  color: #FFFFFF;
+  background: var(--gold-primary);
+  color: var(--navy-deep);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -665,27 +690,26 @@ h3 {
 
 .policy-text-primary {
   font-weight: 700;
-  color: #92400E;
+  color: var(--navy-deep);
   font-size: 0.96rem;
 }
 
 .policy-text-secondary {
-  color: #B45309;
+  color: var(--gold-hover);
   font-size: 0.88rem;
 }
 
-/* ---------------- Sections ---------------- */
+/* ---------------- Sections Rhythm & Dividers ---------------- */
+/* Product sections = sand gradient, alternating with deep sand gradient */
 .section {
   position: relative;
-  padding: 65px 0;
-  background-color: var(--bg-primary);
-  background-image: var(--pattern-lodge);
-  background-repeat: repeat;
-  border-bottom: 1px solid var(--border-subtle);
+  padding: 68px 0;
+  background: var(--pattern-crosshair), linear-gradient(180deg, #F3EBDD 0%, #EADFCB 100%);
+  border-bottom: 1px solid var(--gold-border);
 }
 
-.section:nth-of-type(even) {
-  background-color: var(--bg-secondary);
+.section-deep-sand {
+  background: var(--pattern-crosshair), linear-gradient(180deg, #E9DEC8 0%, #DFD2B8 100%);
 }
 
 .section-header {
@@ -694,8 +718,20 @@ h3 {
   align-items: flex-end;
   justify-content: space-between;
   margin-bottom: 34px;
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--gold-border);
   padding-bottom: 16px;
+}
+
+/* Soft gold radial glow behind section headings */
+.section-header::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 320px;
+  height: 80px;
+  background: radial-gradient(ellipse at center, rgba(201, 162, 74, 0.12) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .section-title-wrap {
@@ -710,25 +746,25 @@ h3 {
   font-size: 0.78rem;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--amber-primary);
+  color: var(--gold-hover);
   font-weight: 700;
 }
 
 .section-title-wrap h2 {
   font-family: var(--font-heading);
   font-size: clamp(1.6rem, 3.2vw, 2.3rem);
-  color: #111827;
+  color: var(--text-primary);
   margin-bottom: 2px;
 }
 
-/* Short amber divider line with small diamond in the middle */
+/* Short gold divider line with small diamond in the middle */
 .section-title-wrap::after {
   content: '';
   display: block;
   width: 110px;
   height: 14px;
   margin-top: 6px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='14' viewBox='0 0 110 14'%3E%3Cline x1='0' y1='7' x2='46' y2='7' stroke='%23D97706' stroke-width='1.2' stroke-linecap='round'/%3E%3Cpolygon points='55,2 60,7 55,12 50,7' fill='%23F59E0B' stroke='%23D97706' stroke-width='0.8'/%3E%3Cline x1='64' y1='7' x2='110' y2='7' stroke='%23D97706' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='14' viewBox='0 0 110 14'%3E%3Cline x1='0' y1='7' x2='46' y2='7' stroke='%23C9A24A' stroke-width='1.2' stroke-linecap='round'/%3E%3Cpolygon points='55,2 60,7 55,12 50,7' fill='%23E5C378' stroke='%23C9A24A' stroke-width='0.8'/%3E%3Cline x1='64' y1='7' x2='110' y2='7' stroke='%23C9A24A' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: left center;
 }
@@ -741,11 +777,11 @@ h3 {
   overflow-x: clip;
 }
 
-/* Pure white cards with soft shadow and 12px radius */
+/* Card: ivory (#FFFCF5) background, 1px #E4D6B8 border, 14px radius, soft layered shadow */
 .product-card {
-  background: #FFFFFF;
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
+  background: var(--ivory-card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -756,7 +792,7 @@ h3 {
 .product-card:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-hover);
-  border-color: var(--amber-border);
+  border-color: var(--gold-primary);
 }
 
 /* Product Card Slide-In Animation */
@@ -779,26 +815,29 @@ html.js .product-card.animate-in {
   transform: translateX(0);
 }
 
-/* ---------------- PRODUCT IMAGES (Fixed 4:3, Light Grey #F3F4F6) ---------------- */
-/* Image container background: light grey (#F3F4F6). Remove all dark vignettes, overlays, dark frames. Thin light border */
+/* ---------------- PRODUCT IMAGES & CONTAINERS ---------------- */
+/* Image container: cream (#F6F0E4), 4:3 ratio, padding 8px, NO dark vignettes or overlays */
 .product-img-box {
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  background: #F3F4F6;
-  border-bottom: 1px solid var(--border-subtle);
+  background: var(--cream-img);
+  border-bottom: 1px solid var(--card-border);
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 8px;
 }
 
-/* Applied brightness(1.1) and contrast(1.05) so dark guns stand out */
+/* Image: object-fit: contain so rifles and scopes are NEVER stretched, cropped or squeezed.
+   mix-blend-mode: multiply on light container + brightness(1.1) contrast(1.05) */
 .product-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 10px;
+  padding: 4px;
+  mix-blend-mode: multiply;
   filter: brightness(1.1) contrast(1.05);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -807,7 +846,7 @@ html.js .product-card.animate-in {
   transform: scale(1.04);
 }
 
-/* Price badge: white background, dark text, amber border, placed at the top-left */
+/* Price badge: navy background (#0B1224), gold text (#C9A24A), gold border, top-left */
 .product-price-badge {
   position: absolute;
   top: 10px;
@@ -815,15 +854,15 @@ html.js .product-card.animate-in {
   bottom: auto;
   right: auto;
   z-index: 2;
-  background: #FFFFFF;
-  color: #111827;
-  border: 1.5px solid var(--amber-primary);
+  background: var(--navy-deep);
+  color: var(--gold-primary);
+  border: 1.5px solid var(--gold-primary);
   padding: 5px 12px;
   border-radius: var(--radius-sm);
   font-size: 0.92rem;
   font-weight: 700;
   letter-spacing: 0.3px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(11, 18, 36, 0.35);
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -840,25 +879,25 @@ html.js .product-card.animate-in {
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 1.2px;
-  color: var(--amber-primary);
+  color: var(--gold-hover);
   font-weight: 700;
   margin-bottom: 6px;
 }
 
-/* Card titles: #111827 */
+/* Card titles: #1F2937 */
 .product-title {
   font-size: 1.15rem;
   font-weight: 600;
   margin-bottom: 8px;
   line-height: 1.35;
-  color: #111827;
+  color: var(--text-primary);
   min-height: 48px;
 }
 
-/* Card descriptions: #4B5563 (good contrast, easy to read) */
+/* Card descriptions: #5B6472 */
 .product-desc {
   font-size: 0.85rem;
-  color: #4B5563;
+  color: var(--text-muted);
   line-height: 1.5;
   margin-bottom: 18px;
   flex-grow: 1;
@@ -878,14 +917,14 @@ html.js .product-card.animate-in {
   grid-template-columns: 1fr 380px;
   gap: 36px;
   align-items: start;
-  margin: 30px 0 60px;
+  margin: 35px 0 65px;
 }
 
 .cart-items-card, .cart-summary-card {
-  background: #FFFFFF;
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  padding: 26px;
+  background: var(--ivory-card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
   box-shadow: var(--shadow-card);
 }
 
@@ -894,12 +933,12 @@ html.js .product-card.animate-in {
   grid-template-columns: 80px 1fr 110px 120px 44px;
   gap: 16px;
   padding-bottom: 14px;
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--card-border);
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #4B5563;
+  color: var(--text-muted);
 }
 
 .cart-row {
@@ -908,7 +947,7 @@ html.js .product-card.animate-in {
   gap: 16px;
   align-items: center;
   padding: 18px 0;
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--card-border);
 }
 
 .cart-row:last-child {
@@ -920,46 +959,48 @@ html.js .product-card.animate-in {
   aspect-ratio: 4 / 3;
   border-radius: var(--radius-sm);
   overflow: hidden;
-  background: #F3F4F6;
-  border: 1px solid var(--border-subtle);
+  background: var(--cream-img);
+  border: 1px solid var(--card-border);
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 4px;
 }
 
 .cart-thumb-box img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  mix-blend-mode: multiply;
   filter: brightness(1.1) contrast(1.05);
 }
 
 .cart-item-title {
   font-size: 0.98rem;
   font-weight: 600;
-  color: #111827;
+  color: var(--text-primary);
   margin-bottom: 4px;
 }
 
 .cart-item-cat {
   font-size: 0.75rem;
-  color: var(--amber-primary);
+  color: var(--gold-hover);
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .cart-item-price {
-  font-weight: 600;
-  color: #111827;
+  font-weight: 700;
+  color: var(--navy-deep);
   font-size: 0.95rem;
 }
 
 .cart-qty-ctrl {
   display: inline-flex;
   align-items: center;
-  border: 1px solid var(--border-medium);
+  border: 1px solid #D8CBB0;
   border-radius: var(--radius-sm);
-  background: #F9FAFB;
+  background: var(--cream-img);
 }
 
 .qty-btn {
@@ -970,22 +1011,22 @@ html.js .product-card.animate-in {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #111827;
+  color: var(--text-primary);
   font-size: 1.1rem;
   transition: background 0.2s, color 0.2s;
 }
 
 .qty-btn:hover {
-  background: var(--amber-light);
-  color: var(--amber-primary);
+  background: rgba(201, 162, 74, 0.25);
+  color: var(--navy-deep);
 }
 
 .qty-val {
   min-width: 36px;
   text-align: center;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.92rem;
-  color: #111827;
+  color: var(--text-primary);
 }
 
 .cart-remove-btn {
@@ -1016,8 +1057,8 @@ html.js .product-card.animate-in {
   font-size: 1.35rem;
   margin-bottom: 20px;
   padding-bottom: 12px;
-  border-bottom: 1px solid var(--border-subtle);
-  color: #111827;
+  border-bottom: 1px solid var(--card-border);
+  color: var(--text-primary);
 }
 
 .summary-line {
@@ -1026,25 +1067,25 @@ html.js .product-card.animate-in {
   justify-content: space-between;
   margin-bottom: 14px;
   font-size: 0.95rem;
-  color: #4B5563;
+  color: var(--text-muted);
 }
 
 .summary-line.total {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #111827;
-  border-top: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  border-top: 1px solid var(--card-border);
   padding-top: 16px;
   margin-top: 16px;
 }
 
 .summary-line.total .gold-amount {
-  color: var(--amber-primary);
+  color: var(--gold-hover);
 }
 
 .summary-policy-box {
-  background: var(--amber-light);
-  border: 1px dashed var(--amber-border);
+  background: rgba(201, 162, 74, 0.10);
+  border: 1px dashed var(--gold-primary);
   border-radius: var(--radius-md);
   padding: 16px;
   margin: 22px 0;
@@ -1053,7 +1094,7 @@ html.js .product-card.animate-in {
 
 .summary-policy-box p {
   margin-bottom: 8px;
-  color: #92400E;
+  color: var(--text-primary);
 }
 
 .summary-policy-box p:last-child {
@@ -1061,7 +1102,7 @@ html.js .product-card.animate-in {
 }
 
 .summary-policy-box strong {
-  color: #78350F;
+  color: var(--gold-hover);
 }
 
 .empty-cart-view {
@@ -1074,12 +1115,12 @@ html.js .product-card.animate-in {
   height: 70px;
   margin: 0 auto 20px;
   border-radius: 50%;
-  background: var(--amber-light);
-  border: 1px solid var(--amber-border);
+  background: rgba(201, 162, 74, 0.15);
+  border: 1.5px solid var(--gold-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--amber-primary);
+  color: var(--gold-primary);
 }
 
 .empty-cart-icon svg {
@@ -1089,11 +1130,11 @@ html.js .product-card.animate-in {
 
 .empty-cart-view h2 {
   margin-bottom: 12px;
-  color: #111827;
+  color: var(--text-primary);
 }
 
 .empty-cart-view p {
-  color: #4B5563;
+  color: var(--text-muted);
   margin-bottom: 28px;
   max-width: 440px;
   margin-left: auto;
@@ -1106,14 +1147,14 @@ html.js .product-card.animate-in {
   grid-template-columns: 1fr 400px;
   gap: 36px;
   align-items: start;
-  margin: 30px 0 60px;
+  margin: 35px 0 65px;
 }
 
 .form-card {
-  background: #FFFFFF;
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  padding: 30px;
+  background: var(--ivory-card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
   box-shadow: var(--shadow-card);
 }
 
@@ -1125,7 +1166,7 @@ html.js .product-card.animate-in {
   display: block;
   font-size: 0.88rem;
   font-weight: 600;
-  color: #1F2A37;
+  color: var(--text-primary);
   margin-bottom: 8px;
 }
 
@@ -1136,11 +1177,11 @@ html.js .product-card.animate-in {
 .form-input, .form-textarea, .form-select {
   width: 100%;
   min-height: 48px;
-  background: #FFFFFF;
-  border: 1px solid var(--border-medium);
+  background: #FFFCF5;
+  border: 1px solid #D8CBB0;
   border-radius: var(--radius-sm);
   padding: 10px 16px;
-  color: #111827;
+  color: var(--text-primary);
   font-size: 0.95rem;
   transition: all 0.2s ease;
 }
@@ -1152,8 +1193,8 @@ html.js .product-card.animate-in {
 
 .form-input:focus, .form-textarea:focus, .form-select:focus {
   outline: none;
-  border-color: var(--amber-primary);
-  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 0 3px rgba(201, 162, 74, 0.20);
   background: #FFFFFF;
 }
 
@@ -1180,7 +1221,7 @@ html.js .product-card.animate-in {
   justify-content: space-between;
   gap: 12px;
   padding: 10px 0;
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--card-border);
   font-size: 0.9rem;
 }
 
@@ -1198,9 +1239,10 @@ html.js .product-card.animate-in {
   width: 48px;
   aspect-ratio: 4 / 3;
   object-fit: contain;
-  background: #F3F4F6;
-  border: 1px solid var(--border-subtle);
+  background: var(--cream-img);
+  border: 1px solid var(--card-border);
   border-radius: 4px;
+  mix-blend-mode: multiply;
   filter: brightness(1.1) contrast(1.05);
 }
 
@@ -1208,9 +1250,9 @@ html.js .product-card.animate-in {
 .success-card {
   text-align: center;
   padding: 50px 30px;
-  background: #FFFFFF;
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
+  background: var(--ivory-card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
   max-width: 650px;
   margin: 40px auto;
@@ -1220,12 +1262,12 @@ html.js .product-card.animate-in {
   width: 76px;
   height: 76px;
   border-radius: 50%;
-  background: var(--amber-light);
-  border: 2px solid var(--amber-primary);
+  background: rgba(201, 162, 74, 0.15);
+  border: 2px solid var(--gold-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--amber-primary);
+  color: var(--gold-primary);
   margin: 0 auto 24px;
 }
 
@@ -1236,19 +1278,19 @@ html.js .product-card.animate-in {
 
 .success-card h2 {
   margin-bottom: 16px;
-  color: #111827;
+  color: var(--text-primary);
 }
 
 .success-card p {
-  color: #4B5563;
+  color: var(--text-muted);
   font-size: 1.05rem;
   line-height: 1.6;
   margin-bottom: 24px;
 }
 
 .order-fallback-link-box {
-  background: #F9FAFB;
-  border: 1px solid var(--border-subtle);
+  background: var(--cream-img);
+  border: 1px solid var(--card-border);
   border-radius: var(--radius-md);
   padding: 16px;
   margin-bottom: 28px;
@@ -1264,9 +1306,9 @@ html.js .product-card.animate-in {
 }
 
 .contact-info-card {
-  background: #FFFFFF;
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
+  background: var(--ivory-card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
   padding: 32px;
   box-shadow: var(--shadow-card);
   display: flex;
@@ -1285,12 +1327,12 @@ html.js .product-card.animate-in {
   height: 44px;
   min-width: 44px;
   border-radius: 50%;
-  background: var(--amber-light);
-  border: 1px solid var(--amber-border);
+  background: rgba(201, 162, 74, 0.15);
+  border: 1.5px solid var(--gold-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--amber-primary);
+  color: var(--gold-primary);
 }
 
 .contact-meta-icon svg {
@@ -1301,22 +1343,22 @@ html.js .product-card.animate-in {
 .contact-meta-text h4 {
   font-size: 1.05rem;
   margin-bottom: 4px;
-  color: #111827;
+  color: var(--text-primary);
 }
 
 .contact-meta-text p {
   font-size: 0.92rem;
-  color: #4B5563;
+  color: var(--text-muted);
   line-height: 1.5;
 }
 
-/* ---------------- Footer (Deep Navy with high contrast readable text) ---------------- */
+/* ---------------- FOOTER (Navy with thin gold top border & high contrast light text) ---------------- */
 .site-footer {
-  background: #0F172A;
-  border-top: 1px solid #1E293B;
+  background: var(--navy-deep);
+  border-top: 1px solid var(--gold-border);
   padding: 60px 0 24px;
   margin-top: auto;
-  color: #E2E8F0;
+  color: var(--text-on-navy-muted);
 }
 
 .footer-grid {
@@ -1328,7 +1370,7 @@ html.js .product-card.animate-in {
 
 .footer-col h3 {
   font-size: 1.25rem;
-  color: #F8FAFC;
+  color: var(--text-on-navy);
   margin-bottom: 18px;
   position: relative;
   padding-bottom: 10px;
@@ -1341,12 +1383,12 @@ html.js .product-card.animate-in {
   left: 0;
   width: 40px;
   height: 2px;
-  background: var(--amber-primary);
+  background: var(--gold-primary);
 }
 
 .footer-desc {
   font-size: 0.9rem;
-  color: #CBD5E1;
+  color: var(--text-on-navy-muted);
   line-height: 1.6;
   margin: 16px 0 22px;
 }
@@ -1360,7 +1402,7 @@ html.js .product-card.animate-in {
 
 .footer-nav-link {
   font-size: 0.92rem;
-  color: #E2E8F0;
+  color: var(--text-on-navy-muted);
   transition: all 0.2s;
   display: inline-flex;
   align-items: center;
@@ -1368,11 +1410,11 @@ html.js .product-card.animate-in {
 }
 
 .footer-nav-link span {
-  color: var(--amber-primary);
+  color: var(--gold-primary);
 }
 
 .footer-nav-link:hover {
-  color: #FBBF24;
+  color: var(--gold-light);
   transform: translateX(4px);
 }
 
@@ -1380,35 +1422,53 @@ html.js .product-card.animate-in {
   margin-bottom: 14px;
   font-size: 0.9rem;
   line-height: 1.5;
-  color: #E2E8F0;
+  color: var(--text-on-navy-muted);
   display: flex;
   gap: 10px;
 }
 
 .footer-policy-item strong {
-  color: #FBBF24;
+  color: var(--gold-light);
 }
 
 .footer-policy-item p {
-  color: #94A3B8 !important;
+  color: var(--text-on-navy-muted) !important;
+}
+
+/* FIX CONTRAST BUG: Shop address is made light (#E2E8F0) and clearly readable on navy */
+.footer-shop-address {
+  color: var(--text-address-navy) !important;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.footer-shop-address strong {
+  color: var(--text-on-navy) !important;
+}
+
+.footer-shop-hours {
+  color: var(--text-on-navy-muted) !important;
+  font-size: 0.85rem;
+  margin-bottom: 18px;
 }
 
 .footer-shop-loc {
   margin-top: 20px;
   padding-top: 16px;
-  border-top: 1px solid #1E293B;
+  border-top: 1px solid rgba(201, 162, 74, 0.20);
 }
 
 .footer-map-frame {
   border-radius: var(--radius-md);
-  border: 1px solid #334155;
+  border: 1px solid rgba(201, 162, 74, 0.35);
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
   margin-bottom: 12px;
   display: block;
 }
 
 .footer-bottom {
-  border-top: 1px solid #1E293B;
+  border-top: 1px solid rgba(201, 162, 74, 0.25);
   padding-top: 26px;
   text-align: center;
 }
@@ -1421,25 +1481,24 @@ html.js .product-card.animate-in {
 
 .developer-credit {
   font-size: 1.05rem;
-  color: #E2E8F0;
+  color: var(--text-on-navy-muted);
 }
 
 .developer-credit span {
   font-family: var(--font-script);
   font-size: 1.85rem;
-  color: #FBBF24;
+  color: var(--gold-primary);
   font-weight: 500;
   margin-left: 6px;
   display: inline-block;
   vertical-align: middle;
 }
 
-/* ---------------- POP-UPS (Clean White Modal, Backdrop <= 30% Opacity) ---------------- */
-/* Only used for Add-to-Cart and Order Confirmation */
+/* ---------------- POP-UPS (Clean Ivory Modal, Backdrop <= 30% Opacity) ---------------- */
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.28); /* At most 30% opacity */
+  background: rgba(11, 18, 36, 0.28); /* At most 30% opacity */
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   z-index: 2000;
@@ -1458,13 +1517,13 @@ html.js .product-card.animate-in {
 }
 
 .modal-card {
-  background: #FFFFFF;
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
+  background: var(--ivory-card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
   max-width: 400px;
   width: 100%;
   padding: 24px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 20px 40px rgba(11, 18, 36, 0.20);
   position: relative;
   text-align: center;
   transform: translateY(12px) scale(0.97);
@@ -1485,43 +1544,43 @@ html.js .product-card.animate-in {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #6B7280;
-  background: #F3F4F6;
+  color: var(--text-muted);
+  background: var(--cream-img);
   font-size: 18px;
   line-height: 1;
   transition: all 0.15s ease;
 }
 
 .modal-close-btn:hover {
-  background: #E5E7EB;
-  color: #111827;
+  background: #E5DBC7;
+  color: var(--text-primary);
 }
 
 .modal-status-icon {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: #ECFDF5;
-  border: 1.5px solid #10B981;
-  color: #059669;
+  background: rgba(201, 162, 74, 0.15);
+  border: 1.5px solid var(--gold-primary);
+  color: var(--gold-hover);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 800;
   margin: 0 auto 12px;
 }
 
 .modal-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--navy-deep);
   margin-bottom: 6px;
 }
 
 .modal-subtitle {
   font-size: 0.88rem;
-  color: #4B5563;
+  color: var(--text-muted);
   margin-bottom: 16px;
 }
 
@@ -1529,8 +1588,8 @@ html.js .product-card.animate-in {
   display: flex;
   align-items: center;
   gap: 14px;
-  background: #F9FAFB;
-  border: 1px solid var(--border-subtle);
+  background: var(--cream-img);
+  border: 1px solid var(--card-border);
   border-radius: 10px;
   padding: 10px 14px;
   margin-bottom: 20px;
@@ -1541,9 +1600,10 @@ html.js .product-card.animate-in {
   width: 65px;
   aspect-ratio: 4 / 3;
   object-fit: contain;
-  background: #F3F4F6;
+  background: #FFFFFF;
   border-radius: 6px;
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--card-border);
+  mix-blend-mode: multiply;
   filter: brightness(1.1) contrast(1.05);
 }
 
@@ -1555,7 +1615,7 @@ html.js .product-card.animate-in {
 .modal-product-name {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #111827;
+  color: var(--text-primary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1565,7 +1625,7 @@ html.js .product-card.animate-in {
 .modal-product-price {
   font-size: 0.92rem;
   font-weight: 700;
-  color: var(--amber-primary);
+  color: var(--gold-hover);
 }
 
 .modal-actions {
@@ -1593,10 +1653,11 @@ html.js .product-card.animate-in {
   }
   .site-header {
     height: 56px;
-    max-height: 56px;
+  }
+  .site-header.scrolled {
+    height: 48px;
   }
   .header-container {
-    height: 56px;
     padding: 0 14px;
   }
   .brand-crest {
@@ -1616,7 +1677,7 @@ html.js .product-card.animate-in {
     display: none;
   }
   .cart-btn {
-    padding: 6px 10px;
+    padding: 6px 12px;
     min-height: 38px;
   }
   .cart-label {

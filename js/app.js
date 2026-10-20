@@ -218,8 +218,8 @@
         <h3 class="modal-title">Order Generated!</h3>
         <p class="modal-subtitle">Opening WhatsApp to confirm your order details with PAK AIR GUNS.</p>
 
-        <div style="background:#FEF3C7; border:1px solid #FCD34D; border-radius:10px; padding:12px; margin-bottom:18px; font-size:0.85rem; color:#92400E; text-align:left;">
-          <strong>Open parcel first, then pay.</strong><br>
+        <div style="background:var(--cream-img); border:1px solid var(--card-border); border-radius:10px; padding:12px; margin-bottom:18px; font-size:0.85rem; color:var(--text-primary); text-align:left;">
+          <strong style="color:var(--gold-hover);">Open parcel first, then pay.</strong><br>
           Delivery all over Pakistan: Rs 1,500.
         </div>
 
@@ -419,9 +419,9 @@
       });
     }
 
-    // Header scroll background effect
+    // Header scroll background effect (shrinks and shadows after 40px of scroll on all devices)
     window.addEventListener('scroll', function() {
-      if (window.scrollY > 30) {
+      if (window.scrollY > 40) {
         headerEl.classList.add('scrolled');
       } else {
         headerEl.classList.remove('scrolled');
@@ -456,35 +456,35 @@
 
           <!-- Column 2: Delivery & Customer Trust -->
           <div class="footer-col">
-            <h3>Delivery & Trust</h3>
+            <h3>Delivery &amp; Trust</h3>
             <div class="footer-policy-item">
               <span>🚚</span>
               <div>
                 <strong>Delivery all over Pakistan: Rs 1,500.</strong>
-                <p style="margin-top:4px; font-size:0.85rem; color:var(--text-muted);">Fast, safe courier delivery across all cities and towns.</p>
+                <p style="margin-top:4px; font-size:0.85rem; color:#CBD5E1;">Fast, safe courier delivery across all cities and towns.</p>
               </div>
             </div>
             <div class="footer-policy-item">
               <span>📦</span>
               <div>
                 <strong>Open the parcel first, then pay.</strong>
-                <p style="margin-top:4px; font-size:0.85rem; color:var(--text-muted);">Inspect your parcel upon delivery before paying the remaining amount.</p>
+                <p style="margin-top:4px; font-size:0.85rem; color:#CBD5E1;">Inspect your parcel upon delivery before paying the remaining amount.</p>
               </div>
             </div>
           </div>
 
-          <!-- Column 3: Store & WhatsApp -->
+          <!-- Column 3: Store & WhatsApp (Contrast Bug Fixed: Fully light and readable) -->
           <div class="footer-col">
             <h3>Visit Our Shop</h3>
-            <p style="color:var(--text-secondary); font-size:0.92rem; line-height:1.6; margin-bottom:12px;">
-              📍 <strong>Shop # 16, Main Wagah Road</strong><br>
+            <p class="footer-shop-address" style="color:#E2E8F0; font-size:0.95rem; line-height:1.6; margin-bottom:12px;">
+              <span style="color:#C9A24A;">📍</span> <strong style="color:#F8FAFC;">Shop # 16, Main Wagah Road</strong><br>
               Lahore, Punjab, Pakistan
             </p>
-            <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:16px;">
-              Open 7 Days a week &bull; Orders & Inquiries via WhatsApp
+            <p class="footer-shop-hours" style="color:#CBD5E1; font-size:0.85rem; margin-bottom:18px;">
+              Open 7 Days a week &bull; Orders &amp; Inquiries via WhatsApp
             </p>
-            <a href="https://wa.me/${WHATSAPP_NUMBER}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-gold btn-sm">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <a href="https://wa.me/${WHATSAPP_NUMBER}" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-sm" aria-label="Chat on WhatsApp">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
                 <path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.979-.276-.1-.476-.15-.676.15s-.777.98-.953 1.18c-.175.2-.351.226-.652.075s-1.27-.468-2.42-1.493c-.894-.799-1.498-1.787-1.674-2.088-.175-.3-.019-.462.132-.612.136-.135.301-.351.451-.527.151-.175.2-.301.301-.501.1-.2.05-.376-.025-.526-.075-.15-.676-1.63-.927-2.232-.244-.588-.492-.508-.676-.517l-.576-.01c-.2 0-.526.075-.802.376s-1.053 1.028-1.053 2.508 1.078 2.909 1.228 3.11c.151.2 2.122 3.24 5.142 4.544.718.31 1.279.496 1.716.634.721.23 1.378.198 1.897.12.578-.088 1.78-.727 2.03-1.43.25-.702.25-1.304.175-1.43-.075-.125-.276-.2-.576-.35z"/>
               </svg>
               WhatsApp: +92 310 2157098
@@ -803,11 +803,11 @@
             <div class="checkout-item-info">
               <img src="${item.image}" alt="${escapeHtml(item.name)}" class="checkout-item-thumb">
               <div>
-                <strong style="color:#fff; display:block;">${escapeHtml(item.name)}</strong>
+                <strong style="color:var(--text-primary); display:block;">${escapeHtml(item.name)}</strong>
                 <span style="color:var(--text-muted); font-size:0.8rem;">Qty: ${item.quantity} × ${item.price > 0 ? 'Rs ' + item.price.toLocaleString('en-PK') : 'Price on request'}</span>
               </div>
             </div>
-            <span style="font-weight:600; color:var(--gold-light);">
+            <span style="font-weight:700; color:var(--navy-deep);">
               ${item.price > 0 ? 'Rs ' + (item.price * item.quantity).toLocaleString('en-PK') : 'On request'}
             </span>
           </div>
