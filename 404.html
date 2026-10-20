@@ -9,26 +9,27 @@
   <link rel="canonical" href="./404.html">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-  <!-- Google Fonts Preconnect -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700&family=Great+Vibes&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-page="404">
 
-  <!-- Shared Header -->
+  <!-- Slim Sticky Header -->
   <header id="site-header"></header>
 
   <main>
     <div class="container" style="padding: 90px 20px; text-align: center;">
-      <div style="max-width: 600px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-medium); border-radius: var(--radius-lg); padding: 50px 30px; box-shadow: var(--shadow-card);">
+      <div style="max-width: 600px; margin: 0 auto; background: var(--forest-panel); border: 1px solid var(--forest-border); border-radius: var(--radius-lg); padding: 50px 30px; box-shadow: var(--shadow-card);">
         <div style="font-family: var(--font-heading); font-size: 5rem; font-weight: 700; color: var(--gold-primary); line-height: 1; margin-bottom: 16px;">
           404
         </div>
-        <h1 style="font-size: 2rem; margin-bottom: 16px;">Target Out of Range</h1>
-        <p style="color: var(--text-secondary); margin-bottom: 30px; line-height: 1.6;">
+        <h1 style="font-size: 2rem; margin-bottom: 16px; color: #fff;">Target Out of Range</h1>
+        <p style="color: var(--text-muted); margin-bottom: 30px; line-height: 1.6;">
           The page or product you were looking for could not be found or has moved. Return to our catalog to explore our current inventory of air rifles and shooting accessories.
         </p>
         <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
@@ -45,6 +46,9 @@
 
   <!-- Shared Footer -->
   <footer id="site-footer"></footer>
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 
   <!-- Scripts -->
   <script src="js/config.js" defer></script>

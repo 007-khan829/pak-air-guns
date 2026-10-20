@@ -16,9 +16,10 @@
   <meta property="og:image" content="images/products/product-01.jpg">
   <meta property="og:url" content="./air-guns.html">
 
-  <!-- Google Fonts Preconnect -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700&family=Great+Vibes&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
@@ -45,25 +46,25 @@
 </head>
 <body data-page="air-guns">
 
-  <!-- Shared Header -->
+  <!-- Slim Sticky Header -->
   <header id="site-header"></header>
 
   <main>
     <!-- Page Header Banner -->
-    <header class="page-header">
+    <header class="section" style="padding: 44px 0 20px;">
       <div class="container">
-        <h1>Air Rifles <span class="gold-text">Collection</span></h1>
-        <p class="page-subtitle">
+        <h1 style="margin-bottom: 10px;">Air Rifles <span class="gold-text">Collection</span></h1>
+        <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 680px; margin-bottom: 24px;">
           Precision-crafted air rifles engineered for exceptional target accuracy, range, and longevity. All models thoroughly inspected before dispatch.
         </p>
 
-        <!-- Mandatory Delivery & Payment Policy Banner -->
-        <div class="policy-banner">
-          <div class="policy-banner-content">
-            <div class="policy-badge-icon" aria-hidden="true">✓</div>
+        <!-- Delivery & Payment Policy Banner -->
+        <div style="background: var(--forest-panel); border: 1px solid var(--forest-border); border-radius: var(--radius-md); padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <div style="width: 38px; height: 38px; border-radius: 50%; background: rgba(212, 175, 55, 0.15); border: 1.5px solid var(--gold-primary); color: var(--gold-primary); font-size: 18px; display: flex; align-items: center; justify-content: center;">✓</div>
             <div>
-              <div class="policy-text-primary">Delivery all over Pakistan: Rs 1,500.</div>
-              <div class="policy-text-secondary">Open the parcel first, then send the remaining payment.</div>
+              <div style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; color: #fff;">Delivery all over Pakistan: Rs 1,500.</div>
+              <div style="font-size: 0.9rem; color: var(--text-muted);">Open the parcel first, then send the remaining payment.</div>
             </div>
           </div>
           <a href="https://wa.me/923102157098" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-sm">
@@ -74,7 +75,7 @@
     </header>
 
     <!-- Air Guns Grid Section -->
-    <section class="section">
+    <section class="section" style="padding-top: 10px;">
       <div class="container">
         <div class="section-header">
           <div class="section-title-wrap">
@@ -82,6 +83,9 @@
             <h2>Authentic Air Rifles</h2>
           </div>
         </div>
+
+        <!-- Collection Search, Sort & Filter Toolbar -->
+        <div id="collection-toolbar-container"></div>
 
         <div class="product-grid" id="air-guns-grid">
           <!-- Populated by app.js with ONLY air guns -->
@@ -92,6 +96,9 @@
 
   <!-- Shared Footer -->
   <footer id="site-footer"></footer>
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 
   <!-- Scripts -->
   <script src="js/config.js" defer></script>

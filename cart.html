@@ -16,23 +16,24 @@
   <meta property="og:image" content="images/products/product-01.jpg">
   <meta property="og:url" content="./cart.html">
 
-  <!-- Google Fonts Preconnect -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700&family=Great+Vibes&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-page="cart">
 
-  <!-- Shared Header -->
+  <!-- Slim Sticky Header -->
   <header id="site-header"></header>
 
   <main>
-    <header class="page-header">
+    <header class="section" style="padding: 44px 0 20px;">
       <div class="container">
-        <h1>Shopping <span class="gold-text">Cart</span></h1>
-        <p class="page-subtitle">
+        <h1 style="margin-bottom: 10px;">Shopping <span class="gold-text">Cart</span></h1>
+        <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 680px;">
           Manage your items, check order totals with delivery, and proceed to easy WhatsApp checkout.
         </p>
       </div>
@@ -40,13 +41,16 @@
 
     <div class="container">
       <div id="cart-view-container">
-        <!-- Rendered dynamically by app.js (Empty state or full items table with summary) -->
+        <!-- Rendered dynamically by app.js -->
       </div>
     </div>
   </main>
 
   <!-- Shared Footer -->
   <footer id="site-footer"></footer>
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 
   <!-- Scripts -->
   <script src="js/config.js" defer></script>
