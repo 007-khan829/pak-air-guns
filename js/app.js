@@ -1048,26 +1048,6 @@ Delivery all over Pakistan Rs 1,500. Open parcel first, then pay.`;
     `;
   }
 
-  // ---------------- Teetar Video Intersection Observer ----------------
-  function initTeetarVideoObserver() {
-    const video = document.getElementById('teetar-video-element');
-    if (!video) return;
-
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            video.play().catch(() => {});
-          } else {
-            video.pause();
-          }
-        });
-      }, { threshold: 0.25 });
-
-      observer.observe(video);
-    }
-  }
-
   // ---------------- Collection Page Slim Toolbar ----------------
   function initCollectionToolbar(containerId, originalProducts, renderTargetId, countTargetId) {
     const container = document.getElementById(containerId);
@@ -1187,8 +1167,6 @@ Delivery all over Pakistan Rs 1,500. Open parcel first, then pay.`;
       const covers = getProductsByCategory('cover');
       coversContainer.innerHTML = covers.map(p => renderProductCard(p, false)).join('');
     }
-
-    initTeetarVideoObserver();
   }
 
   // 2. Air Guns Collection Page
