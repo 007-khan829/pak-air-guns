@@ -454,30 +454,20 @@ Delivery all over Pakistan Rs 1,500. Open parcel first, then pay.`;
       }, { passive: true });
     }
 
-    // Periodic Gliding Wild Game Bird across Background (every 35-45s)
+    // Periodic Gliding Wild Game Bird across Background (every 35-50s)
     const glidingBird = document.getElementById('ambient-gliding-bird');
-    if (glidingBird && window.gsap) {
+    if (glidingBird) {
       function scheduleGlidingBird() {
-        const nextDelay = 30 + Math.random() * 15; // 30-45s
+        const nextDelay = 35 + Math.random() * 20; // 35-55s
         setTimeout(() => {
-          const startY = 12 + Math.random() * 25; // 12% to 37% viewport height
-          gsap.set(glidingBird, { x: -120, yPercent: startY, opacity: 0, scale: 0.7 });
-          
-          gsap.timeline()
-            .to(glidingBird, { opacity: 0.55, duration: 2, ease: 'power1.in' })
-            .to(glidingBird, { 
-              x: window.innerWidth + 140, 
-              y: '+=35', 
-              duration: 16, 
-              ease: 'power1.inOut' 
-            }, 0)
-            .to(glidingBird, { opacity: 0, duration: 3, ease: 'power1.out' }, 13)
-            .add(() => {
-              scheduleGlidingBird();
-            });
+          glidingBird.classList.remove('flying');
+          void glidingBird.offsetWidth; // trigger reflow
+          glidingBird.style.top = (12 + Math.random() * 25) + '%';
+          glidingBird.classList.add('flying');
+          setTimeout(scheduleGlidingBird, 22000);
         }, nextDelay * 1000);
       }
-      scheduleGlidingBird();
+      setTimeout(scheduleGlidingBird, 12000);
     }
 
     // Lightweight Falling Leaves Canvas
@@ -574,292 +564,105 @@ Delivery all over Pakistan Rs 1,500. Open parcel first, then pay.`;
     requestAnimationFrame(animate);
   }
 
-  // ---------------- Cinematic Intro Overlay & Bird Burst ----------------
-  function initCinematicIntro() {
-    // Only run on homepage and first session visit
-    const isHome = document.body.getAttribute('data-page') === 'home';
-    if (!isHome) return;
-
-    const introViewed = sessionStorage.getItem('pak_intro_viewed');
-    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (introViewed || prefersReducedMotion) {
-      // Trigger instant reveal of cards without waiting
-      revealProductCardsInstantly();
-      return;
-    }
-
-    let introEl = document.getElementById('cinematic-intro');
-    if (!introEl) {
-      introEl = document.createElement('div');
-      introEl.id = 'cinematic-intro';
-      introEl.innerHTML = `
-        <div class="intro-forest-bg"></div>
-        <button class="intro-skip-btn" id="intro-skip-btn" aria-label="Skip Introduction">Skip &rarr;</button>
-        <div class="intro-center-content" id="intro-center-content">
-          <div class="intro-crest">
-            <svg viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" fill="none"/>
-              <line x1="12" y1="2" x2="12" y2="7" stroke="currentColor" stroke-width="1.8"/>
-              <line x1="12" y1="17" x2="12" y2="22" stroke="currentColor" stroke-width="1.8"/>
-              <line x1="2" y1="12" x2="7" y2="12" stroke="currentColor" stroke-width="1.8"/>
-              <line x1="17" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="1.8"/>
-              <circle cx="12" cy="12" r="2.5" fill="currentColor"/>
-            </svg>
-          </div>
-          <h1 class="intro-brand-title">PAK <span>AIR GUNS</span></h1>
-          <p class="intro-tagline">Precision &bull; Hunting &bull; Marksmanship &bull; Lahore</p>
-        </div>
-      `;
-      document.body.appendChild(introEl);
-    }
-
-    // Bird Birds SVGs / Image templates
-    const birdSVGTeetar = `
-      <svg viewBox="0 0 100 65" fill="#302016" filter="drop-shadow(0 4px 8px rgba(0,0,0,0.6))">
-        <path d="M 50,40 Q 60,15 75,25 Q 90,32 98,35 Q 85,45 68,46 Q 55,58 35,52 Q 15,48 5,38 Q 25,32 45,36 Z"/>
-        <path d="M 45,36 Q 30,5 50,2 Q 65,8 55,35 Z" fill="#4a3525"/>
-      </svg>
-    `;
-
-    const birdSVGPigeon = `
-      <svg viewBox="0 0 100 65" fill="#2c3e38" filter="drop-shadow(0 4px 8px rgba(0,0,0,0.6))">
-        <path d="M 50,38 Q 62,12 80,20 Q 95,28 98,32 Q 82,42 66,44 Q 50,56 30,50 Q 10,45 2,34 Q 22,28 42,34 Z"/>
-        <path d="M 42,34 Q 26,2 48,1 Q 62,6 52,32 Z" fill="#3e524b"/>
-      </svg>
-    `;
-
-    // Create 6 startled birds (mix of teetar and pigeon)
-    const birds = [];
-    const birdConfigs = [
-      { type: 'teetar', startX: 0.25, endX: -0.15, scale: 1.4, dur: 3.4, delay: 0.7 },
-      { type: 'pigeon', startX: 0.45, endX: 1.15, scale: 1.5, dur: 3.2, delay: 0.9 },
-      { type: 'teetar', startX: 0.55, endX: 1.25, scale: 1.3, dur: 3.6, delay: 1.1 },
-      { type: 'pigeon', startX: 0.35, endX: -0.20, scale: 1.6, dur: 3.0, delay: 1.2 },
-      { type: 'teetar', startX: 0.70, endX: 1.20, scale: 1.2, dur: 3.8, delay: 1.4 },
-      { type: 'pigeon', startX: 0.15, endX: 0.65, scale: 1.7, dur: 2.9, delay: 1.6 }
-    ];
-
-    birdConfigs.forEach((cfg, idx) => {
-      const b = document.createElement('div');
-      b.className = 'intro-bird';
-      b.innerHTML = cfg.type === 'teetar' ? birdSVGTeetar : birdSVGPigeon;
-      introEl.appendChild(b);
-      birds.push({ el: b, cfg: cfg });
-    });
-
-    let introDismissed = false;
-
-    function finishIntro() {
-      if (introDismissed) return;
-      introDismissed = true;
-      sessionStorage.setItem('pak_intro_viewed', 'true');
-
-      if (window.gsap) {
-        gsap.to(introEl, {
-          opacity: 0,
-          scale: 1.04,
-          duration: 0.75,
-          ease: 'power2.inOut',
-          onComplete: () => {
-            if (introEl.parentNode) introEl.parentNode.removeChild(introEl);
-            triggerStaggeredProductReveal();
-          }
-        });
-      } else {
-        introEl.style.transition = 'opacity 0.6s ease';
-        introEl.style.opacity = '0';
-        setTimeout(() => {
-          if (introEl.parentNode) introEl.parentNode.removeChild(introEl);
-          triggerStaggeredProductReveal();
-        }, 600);
-      }
-    }
-
-    const skipBtn = document.getElementById('intro-skip-btn');
-    if (skipBtn) {
-      skipBtn.addEventListener('click', finishIntro);
-    }
-
-    if (window.gsap) {
-      const centerContent = document.getElementById('intro-center-content');
-      gsap.fromTo(centerContent, 
-        { opacity: 0, y: 30, scale: 0.94 }, 
-        { opacity: 1, y: 0, scale: 1, duration: 1.4, ease: 'power2.out' }
-      );
-
-      // Animate startled birds bursting up from bottom
-      const winW = window.innerWidth;
-      const winH = window.innerHeight;
-
-      birds.forEach((item) => {
-        const { el, cfg } = item;
-        const startXPos = winW * cfg.startX;
-        const endXPos = winW * cfg.endX;
-        const endYPos = -120;
-
-        gsap.set(el, {
-          x: startXPos,
-          y: winH + 80,
-          scale: 0.4,
-          rotation: (endXPos > startXPos ? 15 : -15),
-          opacity: 0
-        });
-
-        gsap.timeline({ delay: cfg.delay })
-          .to(el, { opacity: 1, duration: 0.25 })
-          .to(el, {
-            x: endXPos,
-            y: endYPos,
-            scale: cfg.scale,
-            duration: cfg.dur,
-            ease: 'power1.in',
-            onUpdate: function() {
-              // Wing flap rotation jitter
-              const progress = this.progress();
-              const jitter = Math.sin(progress * 30) * 8;
-              gsap.set(el, { rotation: (endXPos > startXPos ? 20 : -20) + jitter });
-            }
-          }, 0);
-      });
-
-      // Total sequence under 5.5s
-      setTimeout(() => {
-        finishIntro();
-      }, 5200);
-    } else {
-      setTimeout(finishIntro, 3500);
-    }
-  }
-
-  function revealProductCardsInstantly() {
-    const cards = document.querySelectorAll('.product-card');
-    cards.forEach(card => {
-      card.style.opacity = '1';
-      card.style.transform = 'none';
-      card.classList.add('revealed');
-    });
-  }
-
-  function triggerStaggeredProductReveal() {
-    const cards = document.querySelectorAll('.product-card');
-    if (!cards.length) return;
-
-    if (window.gsap) {
-      gsap.fromTo(cards, 
-        { opacity: 0, y: 35, scale: 0.94 },
-        { 
-          opacity: 1, 
-          y: 0, 
-          scale: 1, 
-          duration: 0.6, 
-          stagger: 0.1, 
-          ease: 'back.out(1.2)',
-          onComplete: () => {
-            cards.forEach(c => c.classList.add('revealed'));
-          }
-        }
-      );
-    } else {
-      revealProductCardsInstantly();
-    }
-  }
-
   // ---------------- Shared Header Rendering (Slim Sticky Max 68px) ----------------
   function renderHeader() {
     const headerEl = document.getElementById('site-header');
     if (!headerEl) return;
 
-    const currentPath = window.location.pathname;
-    let pageName = currentPath.substring(currentPath.lastIndexOf('/') + 1) || 'index.html';
-    if (!pageName.endsWith('.html') && pageName !== '') {
-      pageName += '.html';
-    }
+    // Only inject markup if not already pre-rendered statically
+    if (!headerEl.querySelector('.header-container')) {
+      const currentPath = window.location.pathname;
+      let pageName = currentPath.substring(currentPath.lastIndexOf('/') + 1) || 'index.html';
+      if (!pageName.endsWith('.html') && pageName !== '') {
+        pageName += '.html';
+      }
 
-    const isHome = pageName === '' || pageName === 'index.html';
-    const isAirGuns = pageName === 'air-guns.html';
-    const isScopes = pageName === 'scopes-accessories.html';
-    const isContact = pageName === 'contact.html';
-    const waNumber = typeof WHATSAPP_NUMBER !== 'undefined' ? WHATSAPP_NUMBER : "923102157098";
+      const isHome = pageName === '' || pageName === 'index.html';
+      const isAirGuns = pageName === 'air-guns.html';
+      const isScopes = pageName === 'scopes-accessories.html';
+      const isContact = pageName === 'contact.html';
+      const waNumber = typeof WHATSAPP_NUMBER !== 'undefined' ? WHATSAPP_NUMBER : "923102157098";
 
-    headerEl.className = 'site-header';
-    headerEl.innerHTML = `
-      <div class="header-container">
-        <a href="index.html" class="brand-logo" aria-label="PAK AIR GUNS Homepage">
-          <div class="brand-crest" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" fill="none"/>
-              <line x1="12" y1="2" x2="12" y2="7" stroke="currentColor" stroke-width="1.8"/>
-              <line x1="12" y1="17" x2="12" y2="22" stroke="currentColor" stroke-width="1.8"/>
-              <line x1="2" y1="12" x2="7" y2="12" stroke="currentColor" stroke-width="1.8"/>
-              <line x1="17" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="1.8"/>
-              <circle cx="12" cy="12" r="2.5" fill="currentColor"/>
-            </svg>
-          </div>
-          <div class="brand-text-block">
-            <span class="brand-name">PAK <span>AIR GUNS</span></span>
-            <span class="brand-tag">Lahore • Main Wagah Road</span>
-          </div>
-        </a>
-
-        <nav class="main-nav" aria-label="Main Navigation">
-          <a href="index.html" class="nav-link ${isHome ? 'active' : ''}">Home</a>
-          <a href="air-guns.html" class="nav-link ${isAirGuns ? 'active' : ''}">Air Guns</a>
-          <a href="scopes-accessories.html" class="nav-link ${isScopes ? 'active' : ''}">Scopes &amp; Accessories</a>
-          <a href="contact.html" class="nav-link ${isContact ? 'active' : ''}">Contact Us</a>
-        </nav>
-
-        <div class="header-actions">
-          <a href="https://wa.me/${waNumber}" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-header" aria-label="Chat on WhatsApp">
-            <svg viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.979-.276-.1-.476-.15-.676.15s-.777.98-.953 1.18c-.175.2-.351.226-.652.075s-1.27-.468-2.42-1.493c-.894-.799-1.498-1.787-1.674-2.088-.175-.3-.019-.462.132-.612.136-.135.301-.351.451-.527.151-.175.2-.301.301-.501.1-.2.05-.376-.025-.526-.075-.15-.676-1.63-.927-2.232-.244-.588-.492-.508-.676-.517l-.576-.01c-.2 0-.526.075-.802.376s-1.053 1.028-1.053 2.508 1.078 2.909 1.228 3.11c.151.2 2.122 3.24 5.142 4.544.718.31 1.279.496 1.716.634.721.23 1.378.198 1.897.12.578-.088 1.78-.727 2.03-1.43.25-.702.25-1.304.175-1.43-.075-.125-.276-.2-.576-.35z"/>
-            </svg>
-            <span>WhatsApp</span>
-          </a>
-
-          <a href="cart.html" class="cart-btn" aria-label="View Shopping Cart">
-            <span class="cart-icon-wrap" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="9" cy="21" r="1"></circle>
-                <circle cx="20" cy="21" r="1"></circle>
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+      headerEl.className = 'site-header';
+      headerEl.innerHTML = `
+        <div class="header-container">
+          <a href="index.html" class="brand-logo" aria-label="PAK AIR GUNS Homepage">
+            <div class="brand-crest" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" fill="none"/>
+                <line x1="12" y1="2" x2="12" y2="7" stroke="currentColor" stroke-width="1.8"/>
+                <line x1="12" y1="17" x2="12" y2="22" stroke="currentColor" stroke-width="1.8"/>
+                <line x1="2" y1="12" x2="7" y2="12" stroke="currentColor" stroke-width="1.8"/>
+                <line x1="17" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="1.8"/>
+                <circle cx="12" cy="12" r="2.5" fill="currentColor"/>
               </svg>
-            </span>
-            <span class="cart-label">Cart</span>
-            <span class="cart-badge" id="cart-count">0</span>
+            </div>
+            <div class="brand-text-block">
+              <span class="brand-name">PAK <span>AIR GUNS</span></span>
+              <span class="brand-tag">Lahore • Main Wagah Road</span>
+            </div>
           </a>
 
-          <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-            <svg viewBox="0 0 24 24" width="26" height="26" stroke="currentColor" stroke-width="2" fill="none">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-          </button>
-        </div>
-      </div>
+          <nav class="main-nav" aria-label="Main Navigation">
+            <a href="index.html" class="nav-link ${isHome ? 'active' : ''}">Home</a>
+            <a href="air-guns.html" class="nav-link ${isAirGuns ? 'active' : ''}">Air Guns</a>
+            <a href="scopes-accessories.html" class="nav-link ${isScopes ? 'active' : ''}">Scopes &amp; Accessories</a>
+            <a href="contact.html" class="nav-link ${isContact ? 'active' : ''}">Contact Us</a>
+          </nav>
 
-      <!-- Mobile Navigation Drawer -->
-      <div class="mobile-nav-drawer" id="mobile-drawer" aria-hidden="true">
-        <div class="mobile-nav-links">
-          <a href="index.html" class="nav-link ${isHome ? 'active' : ''}">Home</a>
-          <a href="air-guns.html" class="nav-link ${isAirGuns ? 'active' : ''}">Air Guns Collection</a>
-          <a href="scopes-accessories.html" class="nav-link ${isScopes ? 'active' : ''}">Scopes &amp; Accessories</a>
-          <a href="contact.html" class="nav-link ${isContact ? 'active' : ''}">Contact Us</a>
-          <a href="cart.html" class="nav-link">Shopping Cart (<span class="cart-badge" style="display:inline-flex;">0</span>)</a>
+          <div class="header-actions">
+            <a href="https://wa.me/${waNumber}" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-header" aria-label="Chat on WhatsApp">
+              <svg viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.979-.276-.1-.476-.15-.676.15s-.777.98-.953 1.18c-.175.2-.351.226-.652.075s-1.27-.468-2.42-1.493c-.894-.799-1.498-1.787-1.674-2.088-.175-.3-.019-.462.132-.612.136-.135.301-.351.451-.527.151-.175.2-.301.301-.501.1-.2.05-.376-.025-.526-.075-.15-.676-1.63-.927-2.232-.244-.588-.492-.508-.676-.517l-.576-.01c-.2 0-.526.075-.802.376s-1.053 1.028-1.053 2.508 1.078 2.909 1.228 3.11c.151.2 2.122 3.24 5.142 4.544.718.31 1.279.496 1.716.634.721.23 1.378.198 1.897.12.578-.088 1.78-.727 2.03-1.43.25-.702.25-1.304.175-1.43-.075-.125-.276-.2-.576-.35z"/>
+              </svg>
+              <span>WhatsApp</span>
+            </a>
+
+            <a href="cart.html" class="cart-btn" aria-label="View Shopping Cart">
+              <span class="cart-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+              </span>
+              <span class="cart-label">Cart</span>
+              <span class="cart-badge" id="cart-count">0</span>
+            </a>
+
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+              <svg viewBox="0 0 24 24" width="26" height="26" stroke="currentColor" stroke-width="2" fill="none">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            </button>
+          </div>
         </div>
-        <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid var(--forest-border);">
-          <p style="color: var(--text-light); font-weight: 700; margin-bottom: 6px;">Shop # 16, Main Wagah Road, Lahore</p>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">WhatsApp: +92 310 2157098</p>
+
+        <!-- Mobile Navigation Drawer -->
+        <div class="mobile-nav-drawer" id="mobile-drawer" aria-hidden="true">
+          <div class="mobile-nav-links">
+            <a href="index.html" class="nav-link ${isHome ? 'active' : ''}">Home</a>
+            <a href="air-guns.html" class="nav-link ${isAirGuns ? 'active' : ''}">Air Guns Collection</a>
+            <a href="scopes-accessories.html" class="nav-link ${isScopes ? 'active' : ''}">Scopes &amp; Accessories</a>
+            <a href="contact.html" class="nav-link ${isContact ? 'active' : ''}">Contact Us</a>
+            <a href="cart.html" class="nav-link">Shopping Cart (<span class="cart-badge" style="display:inline-flex;">0</span>)</a>
+          </div>
+          <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid var(--forest-border);">
+            <p style="color: var(--text-light); font-weight: 700; margin-bottom: 6px;">Shop # 16, Main Wagah Road, Lahore</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">WhatsApp: +92 310 2157098</p>
+          </div>
         </div>
-      </div>
-    `;
+      `;
+    }
 
     // Mobile nav toggle events
     const toggleBtn = document.getElementById('mobile-toggle');
     const drawer = document.getElementById('mobile-drawer');
 
-    if (toggleBtn && drawer) {
+    if (toggleBtn && drawer && !toggleBtn.dataset.bound) {
+      toggleBtn.dataset.bound = 'true';
       toggleBtn.addEventListener('click', function(e) {
         e.stopPropagation();
         const isOpen = drawer.classList.toggle('open');
@@ -900,13 +703,16 @@ Delivery all over Pakistan Rs 1,500. Open parcel first, then pay.`;
     }
 
     // Header scroll background effect
-    window.addEventListener('scroll', function() {
-      if (window.scrollY > 40) {
-        headerEl.classList.add('scrolled');
-      } else {
-        headerEl.classList.remove('scrolled');
-      }
-    }, { passive: true });
+    if (!window._hasHeaderScrollListener) {
+      window._hasHeaderScrollListener = true;
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 40) {
+          headerEl.classList.add('scrolled');
+        } else {
+          headerEl.classList.remove('scrolled');
+        }
+      }, { passive: true });
+    }
 
     updateCartCountBadge();
   }
@@ -947,6 +753,7 @@ Delivery all over Pakistan Rs 1,500. Open parcel first, then pay.`;
   function renderFooter() {
     const footerEl = document.getElementById('site-footer');
     if (!footerEl) return;
+    if (footerEl.querySelector('.footer-grid-compact')) return; // Already statically pre-rendered
 
     const waNumber = typeof WHATSAPP_NUMBER !== 'undefined' ? WHATSAPP_NUMBER : "923102157098";
 
@@ -1153,17 +960,17 @@ Delivery all over Pakistan Rs 1,500. Open parcel first, then pay.`;
     const scopesContainer = document.getElementById('home-scopes-grid');
     const coversContainer = document.getElementById('home-covers-grid');
 
-    if (gunsContainer && typeof getProductsByCategory === 'function') {
+    if (gunsContainer && !gunsContainer.children.length && typeof getProductsByCategory === 'function') {
       const guns = getProductsByCategory('gun');
       gunsContainer.innerHTML = guns.map((p, idx) => renderProductCard(p, idx === 0)).join('');
     }
 
-    if (scopesContainer && typeof getProductsByCategory === 'function') {
+    if (scopesContainer && !scopesContainer.children.length && typeof getProductsByCategory === 'function') {
       const scopes = getProductsByCategory('scope');
       scopesContainer.innerHTML = scopes.map(p => renderProductCard(p, false)).join('');
     }
 
-    if (coversContainer && typeof getProductsByCategory === 'function') {
+    if (coversContainer && !coversContainer.children.length && typeof getProductsByCategory === 'function') {
       const covers = getProductsByCategory('cover');
       coversContainer.innerHTML = covers.map(p => renderProductCard(p, false)).join('');
     }
@@ -1186,17 +993,17 @@ Delivery all over Pakistan Rs 1,500. Open parcel first, then pay.`;
     const coversContainer = document.getElementById('covers-grid');
     const accessoriesContainer = document.getElementById('accessories-grid');
 
-    if (scopesContainer && typeof getProductsByCategory === 'function') {
+    if (scopesContainer && !scopesContainer.children.length && typeof getProductsByCategory === 'function') {
       const scopes = getProductsByCategory('scope');
       scopesContainer.innerHTML = scopes.map(p => renderProductCard(p, false)).join('');
     }
 
-    if (coversContainer && typeof getProductsByCategory === 'function') {
+    if (coversContainer && !coversContainer.children.length && typeof getProductsByCategory === 'function') {
       const covers = getProductsByCategory('cover');
       coversContainer.innerHTML = covers.map(p => renderProductCard(p, false)).join('');
     }
 
-    if (accessoriesContainer && typeof getProductsByCategory === 'function') {
+    if (accessoriesContainer && !accessoriesContainer.children.length && typeof getProductsByCategory === 'function') {
       const accessories = getProductsByCategory('accessory');
       accessoriesContainer.innerHTML = accessories.map(p => renderProductCard(p, false)).join('');
     }
@@ -1551,7 +1358,6 @@ Delivery all over Pakistan Rs 1,500. Customer will open the parcel first, then s
 
     if (bodyPage === 'home') {
       initHomePage();
-      initCinematicIntro();
     } else if (bodyPage === 'air-guns') {
       initAirGunsPage();
     } else if (bodyPage === 'scopes-accessories') {

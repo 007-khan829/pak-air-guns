@@ -10,7 +10,7 @@ const PRODUCTS = [
     name: "Air Rifle",
     category: "gun",
     price: 14500,
-    image: "images/products/product-01.jpg",
+    image: "images/products/product-01.webp",
     description: "Reliable high-power air rifle engineered for precision target shooting and field practice."
   },
   {
@@ -18,7 +18,7 @@ const PRODUCTS = [
     name: "Air Rifle (Wooden Stock)",
     category: "gun",
     price: 19000,
-    image: "images/products/product-02.jpg",
+    image: "images/products/product-02.webp",
     description: "Classic air rifle featuring an elegant polished wooden stock with superior grip and balance."
   },
   {
@@ -26,7 +26,7 @@ const PRODUCTS = [
     name: "Air Rifle",
     category: "gun",
     price: 15000,
-    image: "images/products/product-03.jpg",
+    image: "images/products/product-03.webp",
     description: "Durable synthetic stock air rifle built for consistent accuracy and smooth cocking."
   },
   {
@@ -34,7 +34,7 @@ const PRODUCTS = [
     name: "Air Rifle",
     category: "gun",
     price: 16000,
-    image: "images/products/product-04.jpg",
+    image: "images/products/product-04.webp",
     description: "Ergonomic precision air rifle with enhanced sights and tactical synthetic stock."
   },
   {
@@ -42,7 +42,7 @@ const PRODUCTS = [
     name: "Kral Air Rifle",
     category: "gun",
     price: 21000,
-    image: "images/products/product-05.jpg",
+    image: "images/products/product-05.webp",
     description: "Authentic Kral precision air rifle with thumbhole stock and high-velocity performance."
   },
   {
@@ -50,7 +50,7 @@ const PRODUCTS = [
     name: "Air Rifle LB600",
     category: "gun",
     price: 17000,
-    image: "images/products/product-06.jpg",
+    image: "images/products/product-06.webp",
     description: "Proven LB600 air rifle model offering smooth break-barrel action and dependable power."
   },
   {
@@ -58,7 +58,7 @@ const PRODUCTS = [
     name: "Air Rifle",
     category: "gun",
     price: 24000,
-    image: "images/products/product-07.jpg",
+    image: "images/products/product-07.webp",
     description: "High performance precision air rifle designed for long-range target stability."
   },
   {
@@ -66,7 +66,7 @@ const PRODUCTS = [
     name: "Artemis Air Rifle with Scope",
     category: "gun",
     price: 29000,
-    image: "images/products/product-08.jpg",
+    image: "images/products/product-08.webp",
     description: "Artemis precision air rifle complete with mounted optical scope and tactical camouflage kit."
   },
   {
@@ -74,7 +74,7 @@ const PRODUCTS = [
     name: "Gamo Whisper X",
     category: "gun",
     price: 34000,
-    image: "images/products/product-09.jpg",
+    image: "images/products/product-09.webp",
     description: "High-spec Gamo Whisper X air rifle with integrated sound suppressor and precision scope system."
   },
   {
@@ -82,7 +82,7 @@ const PRODUCTS = [
     name: "Gamo Whisper X",
     category: "gun",
     price: 28000,
-    image: "images/products/product-10.jpg",
+    image: "images/products/product-10.webp",
     description: "Gamo Whisper X tactical air rifle featuring noise dampening fluted barrel and scope."
   },
   {
@@ -90,7 +90,7 @@ const PRODUCTS = [
     name: "Air Rifle with Scope (Wooden Stock)",
     category: "gun",
     price: 22000,
-    image: "images/products/product-11.jpg",
+    image: "images/products/product-11.webp",
     description: "Refined wooden stock air rifle equipped with long-range telescopic sight."
   },
   {
@@ -98,7 +98,7 @@ const PRODUCTS = [
     name: "Air Rifle",
     category: "gun",
     price: 30000,
-    image: "images/products/product-12.jpg",
+    image: "images/products/product-12.webp",
     description: "Advanced match-grade target air rifle featuring top optic rail and pressure gauge."
   },
   {
@@ -106,7 +106,7 @@ const PRODUCTS = [
     name: "Air Rifle",
     category: "gun",
     price: 15000,
-    image: "images/products/product-13.jpg",
+    image: "images/products/product-13.webp",
     description: "Solid lightweight break-barrel air rifle with fiber-optic sights for instant target acquisition."
   },
   {
@@ -114,7 +114,7 @@ const PRODUCTS = [
     name: "Kaiser High Pressure Pump",
     category: "accessory",
     price: 8000,
-    image: "images/products/product-14.jpg",
+    image: "images/products/product-14.webp",
     description: "Heavy-duty 30 MPa / 4500 PSI stainless steel PCP hand pump with pressure gauge and filter kit."
   },
   {
@@ -122,7 +122,7 @@ const PRODUCTS = [
     name: "High Quality Gun Bags",
     category: "cover",
     price: 2500,
-    image: "images/products/product-15.jpg",
+    image: "images/products/product-15.webp",
     description: "Padded heavy-duty rifle slip covers with accessory pockets, available in tactical camo and black."
   },
   {
@@ -130,7 +130,7 @@ const PRODUCTS = [
     name: "Apolo Slug Pellets .35 (9 mm), High Quality",
     category: "accessory",
     price: 300,
-    image: "images/products/product-16.jpg",
+    image: "images/products/product-16.webp",
     description: "Premium Argentine Apolo heavy-weight .35 caliber (9mm) 75-grain micro-calibrated slug pellets."
   },
   {
@@ -138,7 +138,7 @@ const PRODUCTS = [
     name: "XM1 Bullpup Air Rifle with Scope",
     category: "gun",
     price: 45000,
-    image: "images/products/product-17.jpg",
+    image: "images/products/product-17.webp",
     description: "Stoeger XM1 Bullpup high-pressure PCP air rifle with tactical grip, cheek rest, and premium scope."
   },
   {
@@ -146,7 +146,7 @@ const PRODUCTS = [
     name: "Discovery Premium Scope",
     category: "scope",
     price: 3500,
-    image: "images/products/product-18.jpg",
+    image: "images/products/product-18.webp",
     description: "Discovery VT-R 4-16x42 AOE tactical rifle scope with dual mounting rings and lens covers."
   },
   {
@@ -154,7 +154,7 @@ const PRODUCTS = [
     name: "Bushnell Premium Rifle Scope",
     category: "scope",
     price: 4000,
-    image: "images/products/product-19.jpg",
+    image: "images/products/product-19.webp",
     description: "Bushnell Banner Dusk & Dawn 4x32 multi-coated waterproof rifle scope with protective flip caps."
   },
   {
@@ -162,7 +162,7 @@ const PRODUCTS = [
     name: "GAMO Original High Quality Scope",
     category: "scope",
     price: 6000,
-    image: "images/products/product-20.jpg",
+    image: "images/products/product-20.webp",
     description: "Original GAMO 3-9x40 EG illuminated reticle rifle scope with precision turret adjustments."
   },
   {
@@ -170,7 +170,7 @@ const PRODUCTS = [
     name: "Snowpeak T-Rex Air Rifle",
     category: "gun",
     price: 34000,
-    image: "images/products/product-21.jpg",
+    image: "images/products/product-21.webp",
     description: "Snowpeak T-Rex regulated PCP air rifle with suppressor, Picatinny rails, and tactical stock."
   },
   {
@@ -178,7 +178,7 @@ const PRODUCTS = [
     name: "Air Rifle (Made in China)",
     category: "gun",
     price: 14500,
-    image: "images/products/product-22.jpg",
+    image: "images/products/product-22.webp",
     description: "Dependable standard synthetic air rifle with muzzle brake and grooved receiver for scopes."
   },
   {
@@ -186,7 +186,7 @@ const PRODUCTS = [
     name: "Air Rifle (Made in Turkey)",
     category: "gun",
     price: 19000,
-    image: "images/products/product-23.jpg",
+    image: "images/products/product-23.webp",
     description: "Turkish-crafted high-velocity air rifle featuring skeletonized stock and vented recoil pad."
   },
   {
@@ -194,7 +194,7 @@ const PRODUCTS = [
     name: "Air Rifle (Made in China)",
     category: "gun",
     price: 15500,
-    image: "images/products/product-24.jpg",
+    image: "images/products/product-24.webp",
     description: "Smooth underlever cocking air rifle with traditional finished stock and elevated front sight."
   },
   {
@@ -202,7 +202,7 @@ const PRODUCTS = [
     name: "Air Rifle (Made in Turkey)",
     category: "gun",
     price: 21000,
-    image: "images/products/product-25.jpg",
+    image: "images/products/product-25.webp",
     description: "Turkish camo-dipped magnum air rifle engineered for high precision hunting and field durability."
   },
   {
@@ -210,7 +210,7 @@ const PRODUCTS = [
     name: "Air Rifle (Made in Turkey)",
     category: "gun",
     price: 18000,
-    image: "images/products/product-26.jpg",
+    image: "images/products/product-26.webp",
     description: "Camouflage finished Turkish air rifle with ergonomic stock geometry and high power output."
   }
 ];
