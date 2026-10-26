@@ -3,6 +3,24 @@
  * Single source of truth for global shop settings
  */
 
+// ============================================================================
+// MAINTENANCE MODE SWITCH:
+// Set to `true` to put the website under Maintenance Mode (all pages redirect to maintenance.html)
+// Set to `false` to turn maintenance mode off and restore full website access
+// ============================================================================
+const MAINTENANCE_MODE = true;
+
+if (typeof window !== 'undefined' && MAINTENANCE_MODE) {
+  const currentPath = window.location.pathname;
+  const isMaintenancePage = currentPath.endsWith('maintenance.html') || window.location.href.includes('maintenance.html');
+  if (!isMaintenancePage) {
+    if (document.documentElement) {
+      document.documentElement.style.display = 'none';
+    }
+    window.location.replace('maintenance.html');
+  }
+}
+
 const WHATSAPP_NUMBER = "923102157098";
 const DELIVERY_CHARGES = 1500;
 
