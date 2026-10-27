@@ -8,7 +8,7 @@
 // Set to `true` to put the website under Maintenance Mode (all pages redirect to maintenance.html)
 // Set to `false` to turn maintenance mode off and restore full website access
 // ============================================================================
-const MAINTENANCE_MODE = true;
+const MAINTENANCE_MODE = false;
 
 if (typeof window !== 'undefined' && MAINTENANCE_MODE) {
   const currentPath = window.location.pathname;
