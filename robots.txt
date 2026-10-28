@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: sitemap.xml
+Sitemap: https://007-khan829.github.io/pak-air-guns/sitemap.xml
