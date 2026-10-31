@@ -151,7 +151,7 @@
       document.body.appendChild(backdrop);
     }
 
-    const priceText = typeof formatPrice === 'function' ? formatPrice(product.price) : `Rs ${product.price}`;
+    const priceText = typeof formatPrice === 'function' ? formatPrice(product.price) : `Rs. ${product.price.toLocaleString('en-PK')}`;
 
     backdrop.innerHTML = `
       <div class="quickview-card" style="max-width: 480px; text-align: center;">
@@ -161,7 +161,7 @@
         <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">Item has been successfully added to your order.</p>
         
         <div style="display: flex; align-items: center; gap: 14px; background: rgba(6, 12, 9, 0.6); border: 1px solid var(--forest-border); border-radius: var(--radius-md); padding: 12px; margin-bottom: 22px; text-align: left;">
-          <img src="${product.image}" alt="${escapeHtml(product.name)}" style="width: 70px; height: 52px; object-fit: contain; border-radius: 4px; background: #141f18;" />
+          <img src="${product.image}" alt="${escapeHtml(product.alt || product.name)}" style="width: 70px; height: 52px; object-fit: contain; border-radius: 4px; background: #141f18;" />
           <div>
             <div style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; color: #fff;">${escapeHtml(product.name)}</div>
             <div style="font-family: var(--font-price); font-size: 1.25rem; font-weight: 700; color: var(--gold-primary);">${priceText}</div>
@@ -215,7 +215,7 @@
         <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(37, 211, 102, 0.15); border: 2px solid var(--wa-green); color: var(--wa-green); font-size: 28px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">✓</div>
         <h3 style="font-size: 1.8rem; color: #fff; margin-bottom: 6px;">Order Generated!</h3>
         <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 18px;">
-          Opening WhatsApp to finalize your dispatch with PAK AIR GUNS Lahore.
+          Opening WhatsApp to finalize your dispatch with PAK AIR GUNS.
         </p>
 
         <div style="background: rgba(212, 175, 55, 0.08); border: 1px solid var(--gold-border); border-radius: var(--radius-md); padding: 14px; margin-bottom: 22px; font-size: 0.9rem; color: var(--text-light); text-align: left;">
@@ -268,7 +268,7 @@
       document.body.appendChild(modal);
     }
 
-    const priceText = typeof formatPrice === 'function' ? formatPrice(product.price) : `Rs ${product.price}`;
+    const priceText = typeof formatPrice === 'function' ? formatPrice(product.price) : `Rs. ${product.price.toLocaleString('en-PK')}`;
     const stockTag = deriveStockTag(product);
     const waUrl = buildProductWhatsAppUrl(product, 1);
 
@@ -277,7 +277,7 @@
         <button class="quickview-close-btn" onclick="window.closeQuickViewModal()" aria-label="Close Quick View">×</button>
         <div class="quickview-grid">
           <div class="quickview-img-box">
-            <img src="${product.image}" alt="${escapeHtml(product.name)}" class="quickview-img" />
+            <img src="${product.image}" alt="${escapeHtml(product.alt || product.name)}" class="quickview-img" />
           </div>
           <div class="quickview-details">
             <span class="quickview-tag">${escapeHtml(stockTag)}</span>
@@ -408,9 +408,9 @@
   }
 
   function buildProductWhatsAppUrl(product, quantity = 1) {
-    const waNumber = typeof WHATSAPP_NUMBER !== 'undefined' ? WHATSAPP_NUMBER : "923102157098";
+    const waNumber = typeof WHATSAPP_NUMBER !== 'undefined' ? WHATSAPP_NUMBER : "0311XXXXXXX";
     const photoUrl = new URL(product.image, window.location.href).href;
-    const priceStr = typeof product.price === 'number' && product.price > 0 ? `Rs ${product.price.toLocaleString('en-PK')}` : 'Price on request';
+    const priceStr = typeof product.price === 'number' && product.price > 0 ? `Rs. ${product.price.toLocaleString('en-PK')}` : 'Price on request';
 
     const msg = 
 `*DIRECT INQUIRY / ORDER - PAK AIR GUNS*
@@ -581,7 +581,7 @@ Delivery all over Pakistan Rs 1,500. Open parcel first, then pay.`;
       const isAirGuns = pageName === 'air-guns.html';
       const isScopes = pageName === 'scopes-accessories.html';
       const isContact = pageName === 'contact.html';
-      const waNumber = typeof WHATSAPP_NUMBER !== 'undefined' ? WHATSAPP_NUMBER : "923102157098";
+      const waNumber = typeof WHATSAPP_NUMBER !== 'undefined' ? WHATSAPP_NUMBER : "0311XXXXXXX";
 
       headerEl.className = 'site-header';
       headerEl.innerHTML = `
@@ -599,7 +599,7 @@ Delivery all over Pakistan Rs 1,500. Open parcel first, then pay.`;
             </div>
             <div class="brand-text-block">
               <span class="brand-name">PAK <span>AIR GUNS</span></span>
-              <span class="brand-tag">Lahore • Main Wagah Road</span>
+              <span class="brand-tag">Precision Air Rifles &amp; Gear</span>
             </div>
           </a>
 
@@ -650,8 +650,8 @@ Delivery all over Pakistan Rs 1,500. Open parcel first, then pay.`;
             <a href="cart.html" class="nav-link">Shopping Cart (<span class="cart-badge" style="display:inline-flex;">0</span>)</a>
           </div>
           <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid var(--forest-border);">
-            <p style="color: var(--text-light); font-weight: 700; margin-bottom: 6px;">Shop # 16, Main Wagah Road, Lahore</p>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">WhatsApp: +92 310 2157098</p>
+            <p style="color: var(--text-light); font-weight: 700; margin-bottom: 6px;">Customer Support</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">WhatsApp: 0311XXXXXXX</p>
           </div>
         </div>
       `;
@@ -755,7 +755,7 @@ Delivery all over Pakistan Rs 1,500. Open parcel first, then pay.`;
     if (!footerEl) return;
     if (footerEl.querySelector('.footer-grid-compact')) return; // Already statically pre-rendered
 
-    const waNumber = typeof WHATSAPP_NUMBER !== 'undefined' ? WHATSAPP_NUMBER : "923102157098";
+    const waNumber = typeof WHATSAPP_NUMBER !== 'undefined' ? WHATSAPP_NUMBER : "0311XXXXXXX";
 
     footerEl.className = 'site-footer';
     footerEl.innerHTML = `
@@ -777,30 +777,28 @@ Delivery all over Pakistan Rs 1,500. Open parcel first, then pay.`;
               <li><a href="air-guns.html" class="footer-nav-link">&rsaquo; Air Guns Collection</a></li>
               <li><a href="scopes-accessories.html" class="footer-nav-link">&rsaquo; Scopes &amp; Accessories</a></li>
               <li><a href="cart.html" class="footer-nav-link">&rsaquo; View Cart</a></li>
-              <li><a href="contact.html" class="footer-nav-link">&rsaquo; Contact &amp; Location</a></li>
+              <li><a href="contact.html" class="footer-nav-link">&rsaquo; Contact Us</a></li>
             </ul>
           </div>
 
-          <!-- Col 3: Visit Our Shop (Fully readable light text) -->
+          <!-- Col 3: Customer Support -->
           <div class="footer-col">
-            <h4>Visit Our Shop</h4>
-            <p class="footer-address">
-              📍 <strong>Shop # 16, Main Wagah Road</strong><br>
-              Lahore, Punjab, Pakistan<br>
-              <span style="font-size: 0.85rem; color: #CBD5E1;">Open 7 Days &bull; Direct WhatsApp Support</span>
+            <h4>Customer Support</h4>
+            <p class="footer-desc" style="margin-bottom: 14px;">
+              Available 7 days a week for direct inquiries, product guidance, and nationwide delivery support.
             </p>
             <a href="https://wa.me/${waNumber}" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-sm" aria-label="WhatsApp Support">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
                 <path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.979-.276-.1-.476-.15-.676.15s-.777.98-.953 1.18c-.175.2-.351.226-.652.075s-1.27-.468-2.42-1.493c-.894-.799-1.498-1.787-1.674-2.088-.175-.3-.019-.462.132-.612.136-.135.301-.351.451-.527.151-.175.2-.301.301-.501.1-.2.05-.376-.025-.526-.075-.15-.676-1.63-.927-2.232-.244-.588-.492-.508-.676-.517l-.576-.01c-.2 0-.526.075-.802.376s-1.053 1.028-1.053 2.508 1.078 2.909 1.228 3.11c.151.2 2.122 3.24 5.142 4.544.718.31 1.279.496 1.716.634.721.23 1.378.198 1.897.12.578-.088 1.78-.727 2.03-1.43.25-.702.25-1.304.175-1.43-.075-.125-.276-.2-.576-.35z"/>
               </svg>
-              WhatsApp: +92 310 2157098
+              WhatsApp: 0311XXXXXXX
             </a>
           </div>
         </div>
 
         <!-- Single Line Bottom Bar with Developer Credit -->
         <div class="footer-bottom-single-line">
-          &copy; ${new Date().getFullYear()} PAK AIR GUNS. All rights reserved. Shop # 16, Main Wagah Road, Lahore.
+          &copy; ${new Date().getFullYear()} PAK AIR GUNS. All rights reserved.
           <span class="dev-credit">Developed by <span>Aayan Khan</span></span>
         </div>
       </div>
@@ -810,7 +808,7 @@ Delivery all over Pakistan Rs 1,500. Open parcel first, then pay.`;
   // ---------------- Product Card Component ----------------
   function renderProductCard(product, isHeroItem = false) {
     const stockTag = deriveStockTag(product);
-    const priceText = typeof formatPrice === 'function' ? formatPrice(product.price) : `Rs ${product.price}`;
+    const priceText = typeof formatPrice === 'function' ? formatPrice(product.price) : `Rs. ${product.price.toLocaleString('en-PK')}`;
     const waUrl = buildProductWhatsAppUrl(product, 1);
 
     return `
@@ -821,7 +819,7 @@ Delivery all over Pakistan Rs 1,500. Open parcel first, then pay.`;
           <span class="stock-indicator"><span class="dot"></span>In Stock</span>
           <img 
             src="${product.image}" 
-            alt="${escapeHtml(product.name)}" 
+            alt="${escapeHtml(product.alt || product.name)}" 
             width="400" 
             height="300"
             loading="${isHeroItem ? 'eager' : 'lazy'}" 
@@ -1199,7 +1197,7 @@ Delivery all over Pakistan Rs 1,500. Open parcel first, then pay.`;
           if (!val) {
             showFieldError(phoneInput, 'cust-phone-error', true, "Phone number is required");
           } else if (!validatePhone(val)) {
-            showFieldError(phoneInput, 'cust-phone-error', true, "Please enter a valid Pakistani number (e.g. 03102157098 or +923102157098)");
+            showFieldError(phoneInput, 'cust-phone-error', true, "Please enter a valid Pakistani number (e.g. 03112345678 or 03001234567)");
           } else {
             showFieldError(phoneInput, 'cust-phone-error', false);
           }
@@ -1240,7 +1238,7 @@ Delivery all over Pakistan Rs 1,500. Open parcel first, then pay.`;
           showFieldError(phoneInput, 'cust-phone-error', true, "Phone number is required");
           hasError = true;
         } else if (!validatePhone(phone)) {
-          showFieldError(phoneInput, 'cust-phone-error', true, "Please enter a valid Pakistani number (e.g. 03102157098 or +923102157098)");
+          showFieldError(phoneInput, 'cust-phone-error', true, "Please enter a valid Pakistani number (e.g. 03112345678 or 03001234567)");
           hasError = true;
         }
         if (!address) { showFieldError(addressInput, 'cust-address-error', true); hasError = true; }
@@ -1290,7 +1288,7 @@ ${itemsText}
 *DELIVERY & PAYMENT:*
 Delivery all over Pakistan Rs 1,500. Customer will open the parcel first, then send the remaining payment.`;
 
-        const waNumber = typeof WHATSAPP_NUMBER !== 'undefined' ? WHATSAPP_NUMBER : "923102157098";
+        const waNumber = typeof WHATSAPP_NUMBER !== 'undefined' ? WHATSAPP_NUMBER : "0311XXXXXXX";
         const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(fullMessage)}`;
 
         window.open(waUrl, '_blank');
@@ -1303,7 +1301,7 @@ Delivery all over Pakistan Rs 1,500. Customer will open the parcel first, then s
               <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(37, 211, 102, 0.15); border: 2px solid var(--wa-green); color: var(--wa-green); font-size: 32px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">✓</div>
               <h2 style="font-size: 2rem; color: #fff; margin-bottom: 12px;">Order Generated Successfully!</h2>
               <p style="color: var(--text-light); font-size: 1.05rem; margin-bottom: 22px;">
-                <strong>Please tap "Send" in WhatsApp to confirm your order.</strong> Our shop team in Lahore will confirm dispatch with you promptly.
+                <strong>Please tap "Send" in WhatsApp to confirm your order.</strong> Our team will confirm dispatch with you promptly.
               </p>
               <div style="margin-bottom: 24px;">
                 <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-sm">
@@ -1341,7 +1339,7 @@ Delivery all over Pakistan Rs 1,500. Customer will open the parcel first, then s
 • Phone: ${phone}
 • Message: ${message}`;
 
-      const waNumber = typeof WHATSAPP_NUMBER !== 'undefined' ? WHATSAPP_NUMBER : "923102157098";
+      const waNumber = typeof WHATSAPP_NUMBER !== 'undefined' ? WHATSAPP_NUMBER : "0311XXXXXXX";
       const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(inquiryMsg)}`;
       window.open(waUrl, '_blank');
     });
